@@ -10,6 +10,7 @@ import {IComment} from "@/interface/commentInterface";
 import {getDate} from "@/common/common";
 import {Suspense} from "react";
 import Loading from "@/components/common/Loading";
+import {ImageBlock, TextBlock} from "@/components/view/PostBlocks";
 
 const getPostBlocks = async (id:string) => {
     const res = await fetch(`http://127.0.0.1:4000/posts/${id}`,{ next: { revalidate: 10 } });
@@ -33,8 +34,22 @@ export const generateMetadata = async ({ params }:{ params:{id: string}}): Promi
 const ViewPost = async ({params}:{ params:{id:string}}) => {
     const postBlocks = await getPostBlocks(params.id);
     const postComments = await getPostComments(params.id);
-    if(postBlocks.error || postComments.error ){
+    if( postBlocks.error || postComments.error ){
         notFound()
+    }
+
+    const getRightBlock = (data: IBlock) => {
+        switch (data.block_type) {
+            case "img": {
+                return <ImageBlock key={data.block_id} data={data} />
+            }
+            case "text": {
+                return <TextBlock key={data.block_id} data={data} />
+            }
+            default: {
+                return <TextBlock key={data.block_id} data={data} />
+            }
+        }
     }
     return (
         <div className="w-full h-full min-h-[100vh] relative flex flex-wrap content-start">
@@ -48,20 +63,7 @@ const ViewPost = async ({params}:{ params:{id:string}}) => {
                     </div>
                     <div className="flex w-full relative mt-6 flex-col">
                         {postBlocks.blocks.map((data: IBlock)=> (
-                            data.block_type !== "img" ?
-                                <div key={`content-${data.block_id}`} id={`content-${data.block_id}`}
-                                     className="min-h-6 whitespace-pre-wrap break-all relative">{data.block_content}</div>
-                                :
-                                <div key={`content-${data.block_id}`} id={`content-${data.block_id}`} className="w-full flex justify-center my-4 relative">
-                                    <div className="w-[50%] h-auto flex image-cover">
-                                        <Image
-                                            src={data.block_content}
-                                            alt={"본문이미지"}
-                                            fill
-                                            className="object-contain flex image-unset"
-                                        />
-                                    </div>
-                                </div>
+                            getRightBlock(data)
                         ))}
                         <div className="flex w-full m-auto pt-4 pb-12 flex-col">
                             <div className="w-full text-2xl font-bold">이어서보기</div>
@@ -70,7 +72,7 @@ const ViewPost = async ({params}:{ params:{id:string}}) => {
                             </Suspense>
                         </div>
                         <span className="w-full text-xl font-bold mt-4">댓글이 2개 있습니다</span>
-                        <ul role="list" className="pr-12">
+                        <ul role="list" className="pr-12 pt-3">
                             {postComments.map((data: IComment)=> (
                                 <li key={data.comment_id}
                                     className="flex w-full py-6 gap-2 flex-wrap border-b-[1px] last:border-b-[0px] border-[rgba(0,0,0,0.3)] dark:border-[rgba(255,255,255,0.3)]">
