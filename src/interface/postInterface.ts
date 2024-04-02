@@ -13,6 +13,7 @@ interface IBlock {
     block_index: number;
     block_content: string;
     block_type: string;
+    block_option: string;
 }
 
 export type {IPost, IBlock};
