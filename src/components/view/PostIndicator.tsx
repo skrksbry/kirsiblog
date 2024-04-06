@@ -37,7 +37,7 @@ const PostIndicator = ({blocks}:{blocks:IBlock[]}) => {
     }, [])
     return (
         <div
-            className="flex sticky top-[72px] w-[120px] h-[100%] min-h-[60vh] gap-[0.1rem] flex-col py-2 px-0.5 ml-2">
+            className="hidden lg:flex sticky top-[72px] w-[120px] h-[100%] min-h-[60vh] gap-[0.1rem] flex-col py-2 px-0.5 ml-2">
             {/*<div className="absolute top-2 border-2 w-full h-10 border-red-500"></div>*/}
             {blocks.map((blockData, index) => {
                 if(isLoading && document){
@@ -58,25 +58,30 @@ const PostIndicator = ({blocks}:{blocks:IBlock[]}) => {
                     }
                 }
                 return (
-                    mkItemArray.map((data:number, lineIndex:number)=> (
-                        <div key={`block-${blockData.block_id}-${lineIndex}`}
-                             className={`relative flex w-full h-[0.2rem] hover:h-2.5 transition-all duration-100 flex-col gap-[2px]`}
-                             style={{height:`${blockData.block_type !== "img" ? "": `${heightLatio*3.2}px`}`}}
-                             onClick={() => {
-                                 scrollTarget(`content-${blockData.block_id}`,lineIndex)
-                             }}>
-                            <div
-                                className="bg-black dark:bg-white transition-all duration-200 flex flex-1"
-                                style={{
-                                    width: `${blockData.block_type !== "img" ? `${(data / 106)*100}%` : '100%'}`,
-                                    maxWidth: "100%",
-                                    opacity: (linkedItem + 188) + (linkedItemHeight/2) >= scroll && linkedItem < scroll + window.innerHeight - 260 ? '70%' : '20%'
-                                }}
-                            >
-                                {blockData.block_type !== 'img' ? "" : <span className="flex w-full font-light text-[8px] text-gray-600 justify-center items-center">IMAGE</span>}
-                            </div>
-                        </div>
-                    ))
+                    mkItemArray.map((data:number, lineIndex:number)=> {
+                        if(blockData.block_type != "header" && blockData.block_type != "code") {
+                            return (
+                                <div key={`block-${blockData.block_id}-${lineIndex}`}
+                                     className={`relative flex w-full h-[0.2rem] hover:h-2.5 transition-all duration-100 flex-col gap-[2px]`}
+                                     style={{height: `${blockData.block_type !== "img" ? "" : `${heightLatio * 3.2}px`}`}}
+                                     onClick={() => {
+                                         scrollTarget(`content-${blockData.block_id}`, lineIndex)
+                                     }}>
+                                    <div
+                                        className="bg-black dark:bg-white transition-all duration-200 flex flex-1"
+                                        style={{
+                                            width: `${blockData.block_type !== "img" ? `${(data / 106) * 100}%` : '100%'}`,
+                                            maxWidth: "100%",
+                                            opacity: (linkedItem + 188) + (linkedItemHeight / 2) >= scroll && linkedItem < scroll + window.innerHeight - 260 ? '70%' : '20%'
+                                        }}
+                                    >
+                                        {blockData.block_type !== 'img' ? "" : <span
+                                            className="flex w-full font-light text-[8px] text-gray-600 justify-center items-center">IMAGE</span>}
+                                    </div>
+                                </div>
+                            )
+                        }
+                    })
                 );
                 } else {
                     return (<div key={index}></div>);
