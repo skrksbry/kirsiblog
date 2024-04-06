@@ -10,7 +10,7 @@ const getPosts = async (searchParams: { [key: string]: string | string[] | undef
 const PostList = async ({searchParams}: { searchParams: { [key: string]: string | string[] | undefined }}) => {
     const posts = await getPosts(searchParams);
     return (
-        <div className="grid grid-cols-4 w-full gap-2">
+        <div className="grid grid-cols-1 w-full gap-2 lg:grid-cols-4">
             {posts.map((post: IPost) => (
                 <PostCard key={post.post_id} post={post} />
             ))}
