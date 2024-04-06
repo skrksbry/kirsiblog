@@ -10,7 +10,7 @@ const Home = ({searchParams}: { searchParams: { [key: string]: string | string[]
     const theme = cookieStore.get('theme')
     return (
         <div className="w-full h-full relative flex flex-wrap content-start items-start">
-            <div className="flex relative w-[1024px] m-auto pt-24 pb-12 flex-wrap gap-6">
+            <div className="flex relative w-full px-6 md:px-0 lg:w-[1024px] m-auto pt-24 pb-12 flex-wrap gap-6">
                 <CategoryMenu searchParams={searchParams}/>
                 <span className="w-full text-xl font-bold mt-4">TEST POST</span>
                 <PostList searchParams={searchParams}/>
