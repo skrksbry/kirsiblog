@@ -760,7 +760,6 @@ i.justify-align {
 }
 
 .image-cover > div {
-  position: unset !important;
 }
 .image-unset {
   object-fit: contain;
