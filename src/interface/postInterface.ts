@@ -5,6 +5,8 @@ interface IPost {
     post_description: string;
     post_type: string;
     post_date: Date;
+    post_hidden: boolean;
+    post_color: string;
     blocks?: IBlock[];
 }
 
