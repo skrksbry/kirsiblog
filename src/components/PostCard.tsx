@@ -14,15 +14,15 @@ const randomSvgImage = (value: string) => {
 
 const PostCard = ({post}:{post: IPost}) => {
     return (
-        <Link className="grid justify-center group" href={`/view/${post.post_id}`}>
+        <Link className="flex justify-center w-full group" href={`/view/${post.post_id}`}>
             <div
-                className="flex relative w-60 min-w-26 h-full my-2 flex-wrap bottom-0 transition-transform">
-                <div className="flex relative w-full h-40 object-cover rounded-lg overflow-hidden z-10">
+                className="flex relative w-full overflow-hidden h-full my-2 mx-1.5 flex-col bottom-0 transition-transform">
+                <div className="flex relative w-full min-h-40 object-cover rounded-lg overflow-hidden z-10" style={{background: post.post_color}}>
                     <Image src={post.post_image.indexOf("http") === -1  ? randomSvgImage(post.post_image) : post.post_image} alt="document image" fill priority={true}
                            className="w-full h-40 object-cover group-hover:scale-110 transition-all"/>
                 </div>
-                <div className="flex w-full mt-0.5" style={{transition: "none"}}>
-                    <span className="text-2xl font-bold truncate min-h-6">{post.post_name}</span>
+                <div className="flex w-full mt-0.5 overflow-hidden" style={{transition: "none"}}>
+                    <span className="text-xl font-bold truncate min-h-6">{post.post_name}</span>
                 </div>
                 <div className="flex w-full">
                     <span className="text-[12px] text-gray-600 dark:text-gray-400 min-h-3">{post.post_description}</span>
