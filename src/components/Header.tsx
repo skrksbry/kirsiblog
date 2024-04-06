@@ -66,16 +66,18 @@ const Header = ({theme}:{theme: string|undefined}) => {
                 borderColor: "rgba(255,255,255,0.1)",
             } : {background: "transparent", height: "68px", borderColor: "transparent"}}
         >
-            <div className="flex gap-1 items-center transition-transform m-auto flex-wrap"
-                 style={scroll > 8 ? {width: "1024px", marginTop:"0px", transition: "margin 0.25s"} : {width: "1024px", marginTop:"50px", transition: "margin 0.25s"}}>
+            <div className="flex gap-1 w-full lg:w-[1024px] items-center transition-transform m-auto flex-wrap"
+                 style={scroll > 8 ? {marginTop:"0px", transition: "margin 0.25s"} : {marginTop:"50px", transition: "margin 0.25s"}}>
                 <div className="flex w-full gap-3 items-center">
                     <Link href="/" className="flex gap-3 items-center">
                         <div
                             className="flex justify-center items-center font-black text-black text-2xl w-8 h-8 bg-red-500 rounded-[5px]">K
                         </div>
-                        <span className="font-light text-lg transition-none duration-0">KIRSI BLOG</span>
+                        <span className="font-light text-lg lg:hidden transition-none duration-0" style={scroll > 8 ? {display:"none"}:{}}>KIRSI BLOG</span>
+                        <span className="font-light text-lg hidden lg:block transition-none duration-0">KIRSI BLOG</span>
                     </Link>
-                    <div className="block flex-1 overflow-hidden whitespace-nowrap text-ellipsis items-center font-bold mx-6"
+                    <div
+                        className="block flex-1 overflow-hidden whitespace-nowrap text-ellipsis items-center font-bold mx-6"
                     style={{
                         opacity: scroll > 120 && isViewer ? 1 : 0,
                         transition: scroll > 120 && isViewer ? "opacity 0.3s" : "opacity 0.1s",
@@ -83,13 +85,22 @@ const Header = ({theme}:{theme: string|undefined}) => {
                         {documentState ? documentState.title.split("| ")[1] : ""}
                     </div>
                     {isViewer ? (<div onClick={goToBack}
-                                      className="cursor-pointer text-[12px] flex justify-center items-center gap-0.5 hover:scale-105 transition-transform">
+                                      className="cursor-pointer text-[12px] flex justify-center items-center gap-0.5 opacity-70 hover:opacity-100 hover:underline transition-transform"
+                                      style={{
+                                          transition: "opacity 0.25s",
+                                      }}>
                         <ChevronLeftIcon className="w-4 h-4"/>BACK</div>) : ""}
                     {scroll > 8 ? (<div onClick={scrollToTop}
-                                         className="cursor-pointer text-[12px] flex justify-center items-center gap-0.5 hover:scale-105  transition-transform">
+                                        className="cursor-pointer text-[12px] flex justify-center items-center gap-0.5 opacity-70 hover:opacity-100 hover:underline transition-transform"
+                                        style={{
+                                            transition: "opacity 0.25s",
+                                        }}>
                         <ChevronUpIcon className="w-4 h-4"/>TOP</div>) : ""}
                     <div onClick={toggleTheme}
-                         className="cursor-pointer text-[12px] flex justify-center items-center gap-0.5 hover:scale-110  transition-transform">
+                         className="cursor-pointer text-[12px] flex justify-center items-center gap-0.5 opacity-70 hover:opacity-100 hover:underline  transition-transform"
+                         style={{
+                             transition: "opacity 0.25s",
+                         }}>
                         {currentTheme === "light" ? <SunIcon className="w-4 h-4"/> : <MoonIcon className="w-4 h-4"/> }{currentTheme.toUpperCase()}
                     </div>
                 </div>
