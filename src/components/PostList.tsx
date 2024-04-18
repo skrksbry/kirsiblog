@@ -3,7 +3,7 @@ import {IPost} from "@/interface/postInterface";
 import PostCard from "@/components/PostCard";
 
 const getPosts = async (searchParams: { [key: string]: string | string[] | undefined}) => {
-    const requestUrl = searchParams.ct ? `http://127.0.0.1:4000/posts/category/${searchParams.ct}` : 'http://127.0.0.1:4000/posts/'
+    const requestUrl = searchParams.ct ? `${process.env.baseUrl}/posts/category/${searchParams.ct}` : `${process.env.baseUrl}/posts/`
     const res = await fetch(requestUrl,{ next: { revalidate: 30 } });
     return await res.json();
 }
