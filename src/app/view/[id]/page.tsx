@@ -2,11 +2,12 @@
 import Footer from "@/components/Footer";
 import {notFound} from 'next/navigation'
 import {IBlock} from "@/interface/postInterface";
-import PostIndicator from "@/components/view/PostIndicator";
 import type {Metadata} from "next";
 import {ImageBlock, LinkBlock, TextBlock, HeaderImageBLock} from "@/components/view/PostBlocks";
 import AlertLine from "@/components/view/AlertLine";
 import CodeBlocks from "@/components/view/CodeBlocks";
+import dynamic from "next/dynamic";
+const PostIndicator = dynamic(() => import('@/components/view/PostIndicator'));
 
 const getPostBlocks = async (id:string) => {
     const res = await fetch(`${process.env.baseUrl}/posts/${id}`,{ next: { revalidate: 10 } });
