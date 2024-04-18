@@ -6,8 +6,8 @@ import Link from "next/link";
 
 const Header = ({theme}:{theme: string|undefined}) => {
     const [scroll,setScroll] = useState(0);
-    const [documentState,setDocument] = useState<Document|null>(null);
     const [currentTheme, setCurrentTheme] = useState(theme || "dark");
+    const [documentTitle, setDocumentTitle] = useState<string>("");
     const pathname = usePathname();
     const regex = /^\/view\/.*/;
     const isViewer = regex.test(pathname);
@@ -32,7 +32,7 @@ const Header = ({theme}:{theme: string|undefined}) => {
     useEffect(()=> {
         window.addEventListener('scroll', updateScroll);
         setScroll(window.scrollY);
-        setDocument(document);
+        if (typeof window !== 'undefined'){ setDocumentTitle(document.title.split("| ")[1]) }
         const currentTheme = localStorage.getItem('theme') ?? null;
         if (currentTheme) {
             document.documentElement.classList.add(currentTheme);
@@ -82,7 +82,7 @@ const Header = ({theme}:{theme: string|undefined}) => {
                         opacity: scroll > 120 && isViewer ? 1 : 0,
                         transition: scroll > 120 && isViewer ? "opacity 0.3s" : "opacity 0.1s",
                     }}>
-                        {documentState ? documentState.title.split("| ")[1] : ""}
+                        {documentTitle}
                     </div>
                     {isViewer ? (<div onClick={goToBack}
                                       className="cursor-pointer text-[12px] flex justify-center items-center gap-0.5 opacity-70 hover:opacity-100 hover:underline transition-transform"
