@@ -32,7 +32,6 @@ const Header = ({theme}:{theme: string|undefined}) => {
     useEffect(()=> {
         window.addEventListener('scroll', updateScroll);
         setScroll(window.scrollY);
-        if (typeof window !== 'undefined'){ setDocumentTitle(document.title.split("| ")[1]) }
         const currentTheme = localStorage.getItem('theme') ?? null;
         if (currentTheme) {
             document.documentElement.classList.add(currentTheme);
@@ -44,6 +43,10 @@ const Header = ({theme}:{theme: string|undefined}) => {
             window.removeEventListener('scroll', updateScroll);
         }
     },[])
+
+    useEffect(() => {
+        if (typeof window !== 'undefined'){ setDocumentTitle(document.title.split("| ")[1]) }
+    }, [pathname]);
 
     const toggleTheme = () => {
         if (document.documentElement.classList.contains('dark')) {
