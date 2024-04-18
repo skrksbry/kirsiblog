@@ -7,12 +7,11 @@ const ContinuePost = () => {
     const [posts,setPost] = useState<IPost[]>([]);
 
     const getPost = () => {
-        fetch("http://127.0.0.1:4000/posts/")
+        fetch(`${process.env.baseUrl}/posts/`)
             .then(async (r) => {
                 const data = await r.json();
                 setPost(data);
-                console.log(data)}
-            );
+            });
     }
     useEffect(() => {
         getPost();

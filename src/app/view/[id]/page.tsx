@@ -1,15 +1,11 @@
 'use server';
 import Footer from "@/components/Footer";
-import Image from "next/image";
 import {notFound} from 'next/navigation'
-import gal from "../../../../public/gal.jpeg";
 import {IBlock} from "@/interface/postInterface";
 import PostIndicator from "@/components/view/PostIndicator";
 import type {Metadata} from "next";
 import {IComment} from "@/interface/commentInterface";
 import {getDate} from "@/common/common";
-import {Suspense} from "react";
-import Loading from "@/components/common/Loading";
 import {ImageBlock, LinkBlock, TextBlock, HeaderImageBLock} from "@/components/view/PostBlocks";
 import AlertLine from "@/components/view/AlertLine";
 import {UserCircleIcon} from "@heroicons/react/24/solid";
@@ -34,7 +30,7 @@ export const generateMetadata = async ({ params }:{ params:{id: string}}): Promi
     }
 }
 
-const ViewPost = async ({params}:{ params:{id:string}}) => {
+const ViewPost = async ({params}:{ params: {id: string}}) => {
     const postBlocks = await getPostBlocks(params.id);
     const postComments = await getPostComments(params.id);
     if( postBlocks.error || postComments.error ){
@@ -77,6 +73,7 @@ const ViewPost = async ({params}:{ params:{id:string}}) => {
                         {postBlocks.blocks.map((data: IBlock)=> (
                             getBlock(data)
                         ))}
+                        {/* TODO: 고민해보고 추가 예정  */}
                         {/*<div className="flex w-full m-auto pt-4 pb-12 flex-col">*/}
                         {/*    <div className="w-full text-2xl font-bold">이어서보기</div>*/}
                         {/*    <Suspense fallback={<Loading/>}>*/}
@@ -86,39 +83,40 @@ const ViewPost = async ({params}:{ params:{id:string}}) => {
                         { postBlocks.post_hidden ? <AlertLine content={`이 포스트는 링크로만 접근 가능한 비공개 포스트입니다.`}  level={0}/>
                         :
                             <>
-                                <span className="w-full text-xl font-bold mt-4">댓글이 {postComments.length}개 있습니다</span>
-                                <ul role="list" className="pr-12 pt-3">
-                                    {postComments.map((data: IComment) => (
-                                        <li key={data.comment_id}
-                                            className="flex w-full py-6 gap-2 flex-wrap border-b-[1px] last:border-b-[0px] border-[rgba(0,0,0,0.3)] dark:border-[rgba(255,255,255,0.3)]">
-                                            <div className="flex w-full flex-wrap gap-3.5 items-center">
-                                                <div className="flex w-12">
-                                                    <UserCircleIcon className="w-12 h-12"/>
-                                                </div>
-                                                <div className="flex-wrap flex flex-1 content-center">
-                                                    <span
-                                                        className="flex text-[14px] font-bold">{data.comment_owner}</span>
-                                                    <span
-                                                        className="flex text-[14px] font-light opacity-40 items-center ml-0.5">#F32B</span>
-                                                    <span
-                                                        className="w-full text-[9px] text-gray-400">{getDate(data.comment_time)}</span>
-                                                </div>
-                                            </div>
-                                            <div className="flex w-full px-2 py-2">
-                                                <span className="w-full text-[14px]">{data.comment_content}</span>
-                                            </div>
-                                        </li>
-                                    ))}
-                                </ul>
-                                <div className="flex w-full flex-wrap gap-3 justify-end ">
-                                    <textarea
-                                        placeholder="내용을 입력해 주세요."
-                                        className="flex w-full min-h-32 bg-[rgba(0,0,0,0.1)] dark:bg-[rgba(255,255,255,0.1)] outline-none border-none border-[rgba(0,0,0,0.2)] dark:border-[rgba(255,255,255,0.2)] rounded-xl p-4 resize-none"/>
-                                    <button
-                                        className="flex px-4 py-2 bg-[rgba(0,0,0,0.8)] dark:bg-[rgba(255,255,255,0.8)] text-white dark:text-black rounded-xl justify-center items-center font-bold hover:scale-105 transition-transform active:scale-100">
-                                        댓글 등록
-                                    </button>
-                                </div>
+                                {/* TODO: 댓글기능 추가개발  */}
+                                {/*<span className="w-full text-xl font-bold mt-4">댓글이 {postComments.length}개 있습니다</span>*/}
+                                {/*<ul role="list" className="pr-12 pt-3">*/}
+                                {/*    {postComments.map((data: IComment) => (*/}
+                                {/*        <li key={data.comment_id}*/}
+                                {/*            className="flex w-full py-6 gap-2 flex-wrap border-b-[1px] last:border-b-[0px] border-[rgba(0,0,0,0.3)] dark:border-[rgba(255,255,255,0.3)]">*/}
+                                {/*            <div className="flex w-full flex-wrap gap-3.5 items-center">*/}
+                                {/*                <div className="flex w-12">*/}
+                                {/*                    <UserCircleIcon className="w-12 h-12"/>*/}
+                                {/*                </div>*/}
+                                {/*                <div className="flex-wrap flex flex-1 content-center">*/}
+                                {/*                    <span*/}
+                                {/*                        className="flex text-[14px] font-bold">{data.comment_owner}</span>*/}
+                                {/*                    <span*/}
+                                {/*                        className="flex text-[14px] font-light opacity-40 items-center ml-0.5">#F32B</span>*/}
+                                {/*                    <span*/}
+                                {/*                        className="w-full text-[9px] text-gray-400">{getDate(data.comment_time)}</span>*/}
+                                {/*                </div>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="flex w-full px-2 py-2">*/}
+                                {/*                <span className="w-full text-[14px]">{data.comment_content}</span>*/}
+                                {/*            </div>*/}
+                                {/*        </li>*/}
+                                {/*    ))}*/}
+                                {/*</ul>*/}
+                                {/*<div className="flex w-full flex-wrap gap-3 justify-end ">*/}
+                                {/*    <textarea*/}
+                                {/*        placeholder="내용을 입력해 주세요."*/}
+                                {/*        className="flex w-full min-h-32 bg-[rgba(0,0,0,0.1)] dark:bg-[rgba(255,255,255,0.1)] outline-none border-none border-[rgba(0,0,0,0.2)] dark:border-[rgba(255,255,255,0.2)] rounded-xl p-4 resize-none"/>*/}
+                                {/*    <button*/}
+                                {/*        className="flex px-4 py-2 bg-[rgba(0,0,0,0.8)] dark:bg-[rgba(255,255,255,0.8)] text-white dark:text-black rounded-xl justify-center items-center font-bold hover:scale-105 transition-transform active:scale-100">*/}
+                                {/*        댓글 등록*/}
+                                {/*    </button>*/}
+                                {/*</div>*/}
                             </>
                         }
                     </div>

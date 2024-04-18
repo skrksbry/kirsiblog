@@ -24,8 +24,6 @@ const PostIndicator = ({blocks}:{blocks:IBlock[]}) => {
             behavior: "smooth",
         })
 
-        console.log(getItemOffset);
-        console.log(target);
     }
     useEffect(()=> {
         window.addEventListener('scroll', updateScroll);

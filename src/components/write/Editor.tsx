@@ -36,10 +36,6 @@ const Editor = () => {
     }
 
     useEffect(() => {
-        console.log(data);
-    }, [data]);
-
-    useEffect(() => {
         if(tmpData.length > 0) {
             setData(tmpData);
             setTmpData([]);
@@ -91,10 +87,6 @@ const Editor = () => {
             push("/");
         });
     }
-
-    useEffect(() => {
-        console.log(cursor);
-    }, [cursor]);
 
     return (
         <>

@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Kirsi",
-    description: "Kirsi Tech",
+    description: "Kirsi Tech Blog",
 };
 
 const ViewLayout = ({ children }: Readonly<{ children: React.ReactNode}>) => {
