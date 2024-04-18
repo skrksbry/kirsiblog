@@ -4,11 +4,8 @@ import {notFound} from 'next/navigation'
 import {IBlock} from "@/interface/postInterface";
 import PostIndicator from "@/components/view/PostIndicator";
 import type {Metadata} from "next";
-import {IComment} from "@/interface/commentInterface";
-import {getDate} from "@/common/common";
 import {ImageBlock, LinkBlock, TextBlock, HeaderImageBLock} from "@/components/view/PostBlocks";
 import AlertLine from "@/components/view/AlertLine";
-import {UserCircleIcon} from "@heroicons/react/24/solid";
 import CodeBlocks from "@/components/view/CodeBlocks";
 
 const getPostBlocks = async (id:string) => {
