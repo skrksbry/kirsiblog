@@ -24,7 +24,10 @@ export const generateMetadata = async ({ params }:{ params:{id: string}}): Promi
     const data = await getPostBlocks(params.id)
     return {
         title: `KIRSI BLOG | ${data.post_name}`,
-        description: `${data.post_description}`
+        description: `${data.post_description}`,
+        icons: {
+            icon: "/favicon.ico",
+        },
     }
 }
 
@@ -58,7 +61,7 @@ const ViewPost = async ({params}:{ params: {id: string}}) => {
         }
     }
     return (
-        <div className="w-full h-full min-h-[100vh] relative flex flex-wrap content-start">
+        <div className="w-full min-h-[100vh] relative flex flex-wrap content-start">
             <div className="flex relative w-full m-0 px-4 lg:w-[1024px] lg:m-auto lg:px-0 pt-24 pb-12">
                 {/*    Content Area   */}
                 <div className="flex flex-1 relative flex-wrap content-start">
