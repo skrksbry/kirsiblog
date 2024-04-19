@@ -29,6 +29,8 @@ const ImageBlock = ({data}: {data: IBlock}) => {
                     fill
                     sizes="(max-width: 768px) 100vw, 100vw"
                     className="object-contain flex image-unset"
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAFElEQVR4nGNsaGhgwA2Y8MiNYGkA22EBlPG3fjQAAAAASUVORK5CYII="
                 />
             </div>
         </div>
