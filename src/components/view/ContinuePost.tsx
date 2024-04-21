@@ -13,9 +13,7 @@ const ContinuePost = () => {
                 setPost(data);
             });
     }
-    useEffect(() => {
-        getPost();
-    }, []);
+    getPost();
 
     return (
         <div className="flex w-full gap-2">

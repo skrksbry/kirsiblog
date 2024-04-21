@@ -107,10 +107,8 @@ const EditBlock = ({block, changeBlock, focusMove}: {block:Blocks, changeBlock: 
         }
     }
 
-    useEffect(() => {
-        const thisBlock = document.getElementById(`editBlock${block.index}`);
-        thisBlock?.focus();
-    }, []);
+    const thisBlock = document.getElementById(`editBlock${block.index}`);
+    thisBlock?.focus();
 
     return (
         <div className={`${typeStyle(block.type)} relative items-center`}>
