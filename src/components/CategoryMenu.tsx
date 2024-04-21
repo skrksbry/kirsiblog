@@ -19,17 +19,11 @@ const CategoryMenu = ({searchParams}: { searchParams: { [key: string]: string | 
             <SparklesIcon className="w-4 h-4"/>
             <div>All</div>
         </CategoryButton>
-        <CategoryButton isSelect={selectCategory === "frontend"} link="frontend" onClick={() => {
-            setSelectCategory("frontend")
+        <CategoryButton isSelect={selectCategory === "tech"} link="tech" onClick={() => {
+            setSelectCategory("tech")
         }}>
             <CodeBracketSquareIcon className="w-4 h-4"/>
-            <div>Frontend</div>
-        </CategoryButton>
-        <CategoryButton isSelect={selectCategory === "backend"} link="backend" onClick={() => {
-            setSelectCategory("backend")
-        }}>
-            <CodeBracketSquareIcon className="w-4 h-4"/>
-            <div>Backend</div>
+            <div>Tech</div>
         </CategoryButton>
         <CategoryButton isSelect={selectCategory === "uiux"} link="uiux" onClick={() => {
             setSelectCategory("uiux")
