@@ -7,8 +7,9 @@ import Link from "next/link";
 const Header = ({theme}:{theme: string|undefined}) => {
     const [scroll,setScroll] = useState(0);
     const [currentTheme, setCurrentTheme] = useState(theme || "dark");
-    const [documentTitle, setDocumentTitle] = useState<string>("");
     const pathname = usePathname();
+
+    const [documentTitle, setDocumentTitle] = useState<string>("");
     const regex = /^\/view\/.*/;
     const isViewer = regex.test(pathname);
     const router = useRouter();
@@ -45,7 +46,7 @@ const Header = ({theme}:{theme: string|undefined}) => {
     },[])
 
     useEffect(() => {
-        if (typeof window !== 'undefined'){ setDocumentTitle(document.title.split("| ")[1]) }
+        //setDocumentTitle(document.title.split("| ")[1])
     }, [pathname]);
 
     const toggleTheme = () => {
