@@ -46,7 +46,7 @@ const Header = ({theme}:{theme: string|undefined}) => {
     },[])
 
     useEffect(() => {
-        //setDocumentTitle(document.title.split("| ")[1])
+        setDocumentTitle(document.title.split("| ")[1]);
     }, [pathname]);
 
     const toggleTheme = () => {
