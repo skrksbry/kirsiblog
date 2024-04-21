@@ -1,4 +1,3 @@
-"use client"
 import Image from "next/image";
 
 const Banner = () => {
@@ -11,8 +10,9 @@ const Banner = () => {
                 background: "linear-gradient(90deg, #ef4444 0%, rgb(218, 174, 81) 100%)",
                 position: "relative"
             }}>
-            <div className="text-[72px] leading-[100%] lg:w-full lg:p-10 animate-slide whitespace-pre-line font-black">
-                {`WELCOME \nMY BLOG`}
+            <div className="flex flex-col text-[72px] leading-[100%] lg:w-full lg:p-10 animate-slide whitespace-pre-line font-black">
+                <span>WELCOME</span>
+                <span>MY BLOG</span>
             </div>
             <div className="w-[150px] pt-[50px] absolute">
                 <Image
