@@ -7,6 +7,7 @@ import {ImageBlock, LinkBlock, TextBlock, HeaderImageBLock} from "@/components/v
 import AlertLine from "@/components/view/AlertLine";
 import CodeBlocks from "@/components/view/CodeBlocks";
 import dynamic from "next/dynamic";
+import {getDate} from "@/common/common";
 const PostIndicator = dynamic(() => import('@/components/view/PostIndicator'));
 
 const getPostBlocks = async (id:string) => {
@@ -68,7 +69,7 @@ const ViewPost = async ({params}:{ params: {id: string}}) => {
                     <div className="left-0 top-[0px] relative">
                         <span
                             className="w-full relative text-4xl font-bold">{postBlocks.post_name}</span>
-                        <div className="w-full relative ext-[12px] text-gray-400 mt-1">{postBlocks.post_date}</div>
+                        <div className="w-full relative ext-[12px] text-gray-400 mt-1">{getDate(postBlocks.post_date)}</div>
                     </div>
                     <div className="flex w-full relative mt-6 flex-col">
                         {postBlocks.blocks.map((data: IBlock)=> (
