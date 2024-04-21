@@ -68,7 +68,7 @@ const ViewPost = async ({params}:{ params: {id: string}}) => {
                 <div className="flex flex-1 relative flex-wrap content-start">
                     <div className="left-0 top-[0px] relative">
                         <h1
-                            className="w-full relative text-4xl font-bold">{postBlocks.post_name}</h1>
+                            className="w-full relative text-4xl font-bold text-black dark:text-white">{postBlocks.post_name}</h1>
                         <div className="w-full relative ext-[12px] text-gray-400 mt-1">{getDate(postBlocks.post_date)}</div>
                     </div>
                     <div className="flex w-full relative mt-6 flex-col">
