@@ -22,7 +22,6 @@ const Footer = () => {
                 <div className="flex w-full items-center flex-wrap">
                     <div className="flex w-full gap-2 items-center">
                         <span className="text-[#808080] font-black text-[12px] min-w-[45px]">GOH JAE HYUN</span>
-                        <span className="text-[#808080] font-semibold text-[12px] min-w-[45px]">kirsi@kirsi.moe</span>
                     </div>
                     <div className="flex w-full gap-2 items-center">
                         <span
