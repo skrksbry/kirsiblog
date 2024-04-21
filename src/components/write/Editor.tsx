@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from "uuid";
 import EditBlock from "@/components/write/EditBlock";
 import {useRouter} from "next/navigation";
 
+// This component is no longer used //
+// The editor is separated into a separate package. //
 interface Blocks {
     index: number;
     uuid: string;
@@ -77,7 +79,7 @@ const Editor = () => {
             }
         })
 
-        fetch(`${process.env.baseUrl}/posts/`, {
+        fetch(`http://127.0.0.1:4000/posts/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
