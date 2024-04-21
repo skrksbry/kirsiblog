@@ -1,6 +1,5 @@
 "use client";
-import {useEffect, useRef, useState} from "react";
-import Image from "next/image";
+import {useRef, useState} from "react";
 
 interface Blocks {
     index: number;
