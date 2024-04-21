@@ -7,7 +7,7 @@ import Banner from "@/components/Banner";
 const Home = ({searchParams}: { searchParams: { [key: string]: string | string[] | undefined }}) => {
     return (
         <div className="w-full min-h-full relative flex flex-wrap content-start items-start">
-            <div className="flex relative w-full px-6 md:px-0 lg:w-[1024px] m-auto pt-24 pb-12 flex-wrap gap-6">
+            <div className="flex relative w-full px-6 lg:px-0 lg:w-[1024px] m-auto pt-24 pb-12 flex-wrap gap-6">
                 <Banner />
                 <CategoryMenu searchParams={searchParams}/>
                 <span className="w-full text-xl font-bold mt-4">RECENT POST</span>
