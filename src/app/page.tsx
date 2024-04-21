@@ -10,7 +10,6 @@ const Home = ({searchParams}: { searchParams: { [key: string]: string | string[]
             <div className="flex relative w-full px-6 lg:px-0 lg:w-[1024px] m-auto pt-24 pb-12 flex-wrap gap-6">
                 <Banner />
                 <CategoryMenu searchParams={searchParams}/>
-                <span className="w-full text-xl font-bold mt-4">RECENT POST</span>
                 <PostList searchParams={searchParams}/>
             </div>
             <Footer/>
