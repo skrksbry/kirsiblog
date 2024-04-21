@@ -14,6 +14,15 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      keyframes: {
+        slide: {
+          '0%': { transform: 'translateX(200%)', opacity: "0" },
+          '100%': { transform: 'translateX(0px)', opacity: "1" },
+        }
+      },
+      animation: {
+        slide: 'slide 0.5s ease-in-out',
+      }
     },
   },
   plugins: [],

@@ -4,8 +4,15 @@ const Banner = () => {
 
     return (
         <div
-            className="h-[150px] flex image-cover overflow-hidden justify-center items-center pointer-events-none select-none rounded-lg"
-            style={{width: "100%", background: "linear-gradient(90deg, #ef4444 0%, rgb(218, 174, 81) 100%)", position: "relative"}}>
+            className="h-[150px] flex image-cover overflow-hidden justify-center items-center select-none rounded-lg"
+            style={{
+                width: "100%",
+                background: "linear-gradient(90deg, #ef4444 0%, rgb(218, 174, 81) 100%)",
+                position: "relative"
+            }}>
+            <div className="text-[72px] leading-[100%] lg:w-full lg:p-10 animate-slide whitespace-pre-line font-black">
+                {`WELCOME \nMY BLOG`}
+            </div>
             <div className="w-[150px] pt-[50px] absolute">
                 <Image
                     src="/sd.png"
