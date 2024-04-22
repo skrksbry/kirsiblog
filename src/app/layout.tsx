@@ -3,16 +3,14 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { cookies } from 'next/headers'
 import Header from "@/components/Header";
+import {IMetadata} from "@/interface/commentInterface";
+import MetadataContent from "@/components/Metadata";
 
-const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-    title: "KIRSI BLOG",
-    description: "Kirsi Tech Blog",
-    icons: {
-        icon: "/favicon.ico",
-    },
-};
+export const generateMetadata = async ({ params }:{ params:{id: string}}): Promise<IMetadata> =>
+{
+    return MetadataContent({title:"KIRSI BLOG", description:"키르시 블로그입니다.", asPath:'', ogImage:`/blog_og.png`})
+}
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode}>) => {
     const cookieStore = cookies()

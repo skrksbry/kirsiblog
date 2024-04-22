@@ -15,7 +15,7 @@ const MetadataContent = (metadataProps?: IMetadataProps) => {
         openGraph: {
             title: TITLE,
             description: DESCRIPTION,
-            siteName: TITLE,
+            siteName: "KIRSI BLOG",
             locale: 'ko_KR',
             type: 'website',
             url: PAGE_URL,
