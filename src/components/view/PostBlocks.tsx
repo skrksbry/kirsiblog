@@ -37,7 +37,7 @@ const ImageBlock = ({data}: {data: IBlock}) => {
     )
 }
 
-const HeaderImageBLock = ({data}: {data: IBlock}) => {
+const HeaderImageBlock = ({data}: {data: IBlock}) => {
     return (
         <div key={`content-${data.block_id}`} id={`content-${data.block_id}`}
              className="w-full flex justify-center my-4" style={{position: 'relative'}}>
@@ -73,4 +73,4 @@ const LinkBlock = async ({data}: {data: IBlock}) => {
     }
 }
 
-export {TextBlock, ImageBlock, LinkBlock, HeaderImageBLock}
+export {TextBlock, ImageBlock, LinkBlock, HeaderImageBlock}
