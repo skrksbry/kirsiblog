@@ -1,31 +1,19 @@
-# main/kirsiblog
+# Svelte Portfolio Project
 
+This project is a simple portfolio project using Svelte.
 
+I have written only the necessary parts as simply and clearly as possible.
 
-## Getting Started
+please visit blog for more information. ( Korean ) [`blog`](https://blog.silvercherry.io/).
 
-Download links:
+자세한 정보가 필요하면 블로그를 통해 확인해주세요. [`blog`](https://blog.silvercherry.io/).
 
-SSH clone URL: ssh://git@git.jetbrains.space/kirsi/main/kirsiblog.git
+## Project setup
 
-HTTPS clone URL: https://git.jetbrains.space/kirsi/main/kirsiblog.git
+```bash
+# Install package (recommended)
+yarn install
 
-
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
-## Prerequisites
-
-What things you need to install the software and how to install them.
-
+# If you want to use npm
+npm install
 ```
-Examples
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a production system.
-
-## Resources
-
-Add links to external resources for this project, such as CI server, bug tracker, etc.
