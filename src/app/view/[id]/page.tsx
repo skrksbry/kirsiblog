@@ -3,11 +3,13 @@ import Footer from "@/components/Footer";
 import {notFound} from 'next/navigation'
 import {IBlock} from "@/interface/postInterface";
 import type {Metadata} from "next";
-import {ImageBlock, LinkBlock, TextBlock, HeaderImageBLock} from "@/components/view/PostBlocks";
+import {ImageBlock, LinkBlock, TextBlock, HeaderImageBlock} from "@/components/view/PostBlocks";
 import AlertLine from "@/components/view/AlertLine";
 import CodeBlocks from "@/components/view/CodeBlocks";
 import dynamic from "next/dynamic";
 import {getDate} from "@/common/common";
+import MetadataContent from "@/components/Metadata";
+import {IMetadata} from "@/interface/commentInterface";
 const PostIndicator = dynamic(() => import('@/components/view/PostIndicator'));
 
 const getPostBlocks = async (id:string) => {
@@ -20,16 +22,10 @@ const getPostComments = async (id:string) => {
     return await res.json();
 }
 
-export const generateMetadata = async ({ params }:{ params:{id: string}}): Promise<Metadata> =>
+export const generateMetadata = async ({ params }:{ params:{id: string}}): Promise<IMetadata> =>
 {
     const data = await getPostBlocks(params.id)
-    return {
-        title: `KIRSI BLOG | ${data.post_name}`,
-        description: `${data.post_description}`,
-        icons: {
-            icon: "/favicon.ico",
-        },
-    }
+    return MetadataContent({title:data.post_name, description:data.post_description, asPath:'', ogImage:`/og?id=${params.id}`})
 }
 
 const ViewPost = async ({params}:{ params: {id: string}}) => {
@@ -54,7 +50,7 @@ const ViewPost = async ({params}:{ params: {id: string}}) => {
                 return <CodeBlocks key={data.block_id} data={data} />
             }
             case "header": {
-                return <HeaderImageBLock key={data.block_id} data={data} />
+                return <HeaderImageBlock key={data.block_id} data={data} />
             }
             default: {
                 return <TextBlock key={data.block_id} data={data} />
