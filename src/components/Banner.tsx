@@ -10,7 +10,7 @@ const Banner = () => {
                 background: "linear-gradient(90deg, #ef4444 0%, rgb(218, 174, 81) 100%)",
                 position: "relative"
             }}>
-            <div className="flex flex-col text-[72px] leading-[100%] lg:w-full lg:p-10 animate-slide whitespace-pre-line font-black">
+            <div className="flex flex-col text-[64px] lg:text-[72px] leading-[100%] lg:w-full lg:p-10 animate-slide whitespace-pre-line font-black">
                 <span>WELCOME</span>
                 <span>MY BLOG</span>
             </div>
