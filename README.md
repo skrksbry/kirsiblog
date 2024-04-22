@@ -1,8 +1,8 @@
-# Svelte Portfolio Project
+# Next.js 14 Blog Project
 
-This project is a simple portfolio project using Svelte.
+This project is a simple and light project using Next14 with RSC.
 
-I have written only the necessary parts as simply and clearly as possible.
+I tried to make this blog service as light and fast as possible.
 
 please visit blog for more information. ( Korean ) [`blog`](https://blog.silvercherry.io/).
 
@@ -16,4 +16,20 @@ yarn install
 
 # If you want to use npm
 npm install
+```
+
+## Project setup
+
+```bash
+# Dev
+yarn dev
+npm run dev
+
+# Build
+yarn build
+npm run build
+
+# Start
+yarn start
+npm run start
 ```
