@@ -16,7 +16,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode}>) => {
     const cookieStore = cookies()
     const theme = cookieStore.get('theme')
   return (
-    <html lang="ko" className={`h-full ${theme?.value === "light" ? "" : "dark"}`}>
+    <html data-color-mode={`${theme?.value === "light" ? "light" : "dark"}`} lang="ko" className={`h-full ${theme?.value === "light" ? "" : "dark"}`}>
         <body className="text-black bg-[rgb(233,233,233)] dark:text-white dark:bg-black transition-all duration-500 pt-[68px]">
             <Header theme={theme?.value} />
             {children}

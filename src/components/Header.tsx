@@ -36,6 +36,7 @@ const Header = ({theme}:{theme: string|undefined}) => {
         const currentTheme = localStorage.getItem('theme') ?? null;
         if (currentTheme) {
             document.documentElement.classList.add(currentTheme);
+            document.documentElement.setAttribute('data-color-mode', currentTheme);
             setCurrentTheme(currentTheme);
         }else{
             localStorage.setItem('theme', 'dark');
@@ -52,11 +53,14 @@ const Header = ({theme}:{theme: string|undefined}) => {
     const toggleTheme = () => {
         if (document.documentElement.classList.contains('dark')) {
             document.documentElement.classList.remove('dark');
+            document.documentElement.setAttribute('data-color-mode', 'light');
             localStorage.setItem('theme', 'light');
             setCurrentTheme('light');
+            
             document.cookie = "theme=light; path=/; expires=" + 60 * 60 * 24 * 365 * 10;
         } else {
             document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-color-mode', 'dark');
             localStorage.setItem('theme', 'dark');
             setCurrentTheme('dark');
             document.cookie = "theme=dark; path=/; expires=" + 60 * 60 * 24 * 365 * 10;
