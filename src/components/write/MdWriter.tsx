@@ -8,12 +8,12 @@ const MDWriter = () => {
     const [content, setContent] = useState<any>("");
 
     const submitMdPost = () => {
-        fetch(`${process.env.baseUrl}/posts/`, {
+        fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/markdown-posts/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({content}),
+            body: JSON.stringify({post_name:"",post_image:"",post_category:"",post_hidden:true,post_description:"",post_date:new Date(),post_color:"",post_content:content}),
         }).then((res)=>{
             console.log(res);
             alert(res.toString());
