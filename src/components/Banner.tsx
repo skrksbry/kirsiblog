@@ -1,4 +1,3 @@
-import Image from "next/image";
 import BannerCharView from "@/components/common/BannerCharView";
 
 const Banner = () => {
