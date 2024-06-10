@@ -21,6 +21,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-y:scroll;
+  scroll-behavior: smooth;
 }
 
 .other h2 {
@@ -48,7 +49,12 @@ body {
 
 h1 {
   font-size: 24px;
-  color: #333;
+}
+
+.wmde-markdown h1,
+.wmde-markdown h2,
+.wmde-markdown h3 {
+  scroll-margin-top:72px;
 }
 
 .ltr {
