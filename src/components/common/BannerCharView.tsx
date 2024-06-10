@@ -16,6 +16,7 @@ const BannerCharView = () => {
             alpha: true,
             preserveDrawingBuffer: true,
             scale: 0.8,
+            showLoading: false,
             viewport : {
                 x : -50 ,
                 y : -100 ,
