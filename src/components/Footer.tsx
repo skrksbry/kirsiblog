@@ -42,12 +42,12 @@ const Footer = () => {
                         <CloudFlareIcon className="fill-[#808080] w-4 h-4"/>
                         <span className="text-[#808080] font-bold text-[9px]">Cloud Flare</span>
                     </div>
-                    <div className="flex bg-[#808080] rounded-md px-[8px] py-[3px]">
+                    {/* <div className="flex bg-[#808080] rounded-md px-[8px] py-[3px]">
                         <Link className="flex gap-1 items-center" href="https://portfolio.silvercherry.io/"
                               target="_blank"><LinkIcon
                             className="w-3 h-3 fill-[rgb(233,233,233)] dark:fill-black"/><span
                             className="text-[rgb(233,233,233)] dark:text-black font-black text-[9px] min-w-[45px]">포트폴리오</span></Link>
-                    </div>
+                    </div> */}
                 </div>
 
             </div>
