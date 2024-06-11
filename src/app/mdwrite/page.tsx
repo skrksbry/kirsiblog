@@ -8,7 +8,7 @@ const MdEdit = () => {
                 <div className="flex flex-1 relative flex-wrap content-start h-[100%] min-h-[600px]">
                     <div className="left-0 top-[0px] relative mb-6">
                         <h1
-                            className="w-full relative text-4xl font-bold text-black dark:text-white">{"새 포스트 발행하기"}</h1>
+                            className="w-full relative text-xl font-bold text-black dark:text-white">{"새 포스트 발행하기"}</h1>
                     </div>
                     <MdWriter />
                 </div>
