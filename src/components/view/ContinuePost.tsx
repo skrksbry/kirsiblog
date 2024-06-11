@@ -18,7 +18,8 @@ const ContinuePost = () => {
     return (
         <div className="flex w-full gap-2">
             {posts.map((post: IPost) => (
-                <PostCard key={post.post_id} post={post} />
+                // <PostCard key={post.post_id} post={post} />
+                <></>
             ))}
         </div>
     );
