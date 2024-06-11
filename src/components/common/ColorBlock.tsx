@@ -1,7 +1,7 @@
-const ColorBlock = ({color}:{color:string}) => {
-
+const ColorBlock = ({color, onClick}:{color:string, onClick:(color: string)=>void}) => {
+    
     return (
-        <div className="w-8 h-8 mb-6 rounded-[6px] border-2 border-white mr-2 cursor-pointer border-opacity-30 hover:border-opacity-100" style={{background:color}}></div>
+        <div onClick={()=>{onClick(color)}} className="w-8 h-8 mb-6 rounded-[6px] border-2 border-white mr-2 cursor-pointer border-opacity-30 hover:border-opacity-100" style={{background:color}}></div>
     )
 }
 
