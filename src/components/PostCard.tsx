@@ -2,7 +2,7 @@ import Image from "next/image";
 import deco1 from "../../public/deco1.svg";
 import deco2 from "../../public/deco2.svg";
 import Link from "next/link";
-import {IPost} from "@/interface/postInterface";
+import {IMarkdownPost} from "@/interface/postInterface";
 
 const randomSvgImage = (value: string) => {
     if(value === "deco1"){
@@ -12,9 +12,9 @@ const randomSvgImage = (value: string) => {
     }
 }
 
-const PostCard = ({post}:{post: IPost}) => {
+const PostCard = ({post}:{post: IMarkdownPost}) => {
     return (
-        <Link className="flex justify-center w-full group" href={`/view/${post.post_id}`}>
+        <Link className="flex justify-center w-full group" href={`/mdview/${post.post_call_id}`}>
             <div
                 className="flex relative w-full overflow-hidden h-full my-2 mx-1.5 flex-col bottom-0 transition-transform">
                 <div className="flex relative w-full min-h-40 object-cover rounded-lg overflow-hidden z-10" style={{background: post.post_color}}>

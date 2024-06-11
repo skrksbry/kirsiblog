@@ -18,4 +18,16 @@ interface IBlock {
     block_option: string;
 }
 
-export type {IPost, IBlock};
+interface IMarkdownPost {
+    post_call_id: string;
+    post_name: string;
+    post_image: string;
+    post_category: string;
+    post_hidden: boolean;
+    post_description: string;
+    post_date: Date;
+    post_color: string;
+    post_content: string;
+}
+
+export type {IPost, IBlock, IMarkdownPost};

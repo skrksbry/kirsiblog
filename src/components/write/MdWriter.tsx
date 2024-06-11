@@ -37,7 +37,7 @@ const MDWriter = () => {
             <ColorBlock color="linear-gradient(to right, #74ebd5, #acb6e5)" onClick={colorChnage} />
             <ColorBlock color="linear-gradient( to right, #dd4e4e 10%, #dd4e4e 100%)" onClick={colorChnage} />
             <ColorBlock color="linear-gradient(90deg, #111111 0%, #333333 100%)"  onClick={colorChnage} />
-            {/* TODO: 선택된 색상 인터페이스 어떻게 할지 고민 */}
+            {/*TODO: 선택된 색상 인터페이스 어떻게 할지 고민 */}
             <span className="w-full text-sm">SELECTED GRADIENT : {color}</span>
             <input onChange={(e)=>{setImageFileName(e.target.value)}} value={imageFileName} className="w-full text-xl bg-transparent outline-none mb-2" placeholder="이미지 파일명 입력"></input>
             
