@@ -10,6 +10,12 @@ const nextConfig = {
                 port: '',
                 pathname: '/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'r2.silvercherry.io',
+                port: '',
+                pathname: '/**',
+            },
         ],
     },
 };
