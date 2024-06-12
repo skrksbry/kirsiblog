@@ -7,8 +7,8 @@ const BannerCharView = () => {
 
     useEffect(() => {
         new SpinePlayer(containerRef.current, {
-            skeleton: './Yin.json',
-            atlas: './Yin.atlas',
+            skeleton: '/Yin.json',
+            atlas: '/Yin.atlas',
             animation: 'animation',
             showControls: false,
             premultipliedAlpha: true,
