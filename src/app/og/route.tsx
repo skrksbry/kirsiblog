@@ -1,13 +1,13 @@
 import { ImageResponse } from 'next/og';
 
-const getPostBlocks = async (id:string) => {
-    const res = await fetch(`${process.env.baseUrl}/posts/${id}`,{ next: { revalidate: 10 } });
+const getPost = async (id:string) => {
+    const res = await fetch(`${process.env.baseUrl}/markdown-posts/${id}`,{ next: { revalidate: 10 } });
     return await res.json();
 }
 export const GET =  async (request: Request) => {
     try {
         const { searchParams } = new URL(request.url);
-        const postBlocks = await getPostBlocks(searchParams.get("id") || "1");
+        const post = await getPost(searchParams.get("id") || "0");
 
 
 
@@ -15,7 +15,7 @@ export const GET =  async (request: Request) => {
             (
                 <div
                     style={{
-                        background: postBlocks.blocks[0].block_option,
+                        background: post.post_color,
                         height: '100%',
                         width: '100%',
                         display: 'flex',
@@ -33,7 +33,7 @@ export const GET =  async (request: Request) => {
                             KIRSI BLOG
                         </div>
                         <img
-                            src={postBlocks.blocks[0].block_content}
+                            src={post.post_image}
                         />
                         <span
                             style={{
@@ -47,7 +47,7 @@ export const GET =  async (request: Request) => {
                                 fontSize: "38px",
                                 color: "white"
                             }}>
-                                {postBlocks.post_name}
+                                {post.post_name}
                         </span>
                     </div>
                 </div>
