@@ -73,3 +73,16 @@ h1 {
   height: unset !important;
 }
 
+@keyframes bounce2 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.bouncing {
+  animation: bounce2 1s ease-in-out infinite;
+}
+
