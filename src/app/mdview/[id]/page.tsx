@@ -25,7 +25,7 @@ const MarkdownPostView = async ({params}:{ params: {id: string}}) => {
                 <div className="flex flex-1 relative flex-wrap content-start">
                     <div className="left-0 top-[0px] relative post-view">
                         <h1
-                            className="w-full relative text-4xl font-bold text-black dark:text-white">{postContent.post_name1}</h1>
+                            className="w-full relative text-4xl font-bold text-black dark:text-white">{postContent.post_name}</h1>
                         <div className="w-full relative text-[12px] text-gray-400 mt-1">{postContent.post_date}</div>
                     </div>
                     <div className="w-full flex justify-center my-4" style={{position: 'relative'}}>
@@ -41,16 +41,19 @@ const MarkdownPostView = async ({params}:{ params: {id: string}}) => {
                         </div>
                     </div>
                     <MarkdownPostViewer md={postContent.post_content}/>
-                    <div className="pt-2 mt-2 border-t-2 w-full flex border-dotted border-[#808080] border-opacity-30 flex-wrap">
-                        <span className="w-full font-extrabold text-xl px-2">EDITOR</span>
+                    <div className="pt-4 mt-4 border-t-2 w-full flex border-dotted border-[#808080] border-opacity-30 flex-wrap">
+                        <span className="w-full font-extrabold text-xl px-2">Written by</span>
                         <div className="bg-white rounded-full w-24 h-24 overflow-hidden border-[2px] pl-1.5 border-opacity-30 m-2" style={{background: postContent.post_color}}>
                             <BannerCharView />
                         </div>
-                        <span className="m-4 mt-6 font-extrabold text-2xl">KIRSI</span>
+                        <div className="m-4 mt-6 flex flex-col">
+                            <span className="font-extrabold text-2xl">KIRSI</span>
+                            <span className="font-light text-sm">Frontend Developer</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <FloatButton />
+            <FloatButton/>
             <Footer/>
         </div>
     );
