@@ -5,6 +5,7 @@ import { IMetadata } from "@/interface/commentInterface";
 import Footer from "@/components/Footer";
 import BannerCharView from "@/components/common/BannerCharView";
 import FloatButton from "@/components/view/FloatButton";
+import { getDate } from "@/common/common";
 
 const getMarkdownPost = async (id:string) => {
     const res = await fetch(`${process.env.baseUrl}/markdown-posts/${id}`,{ next: { revalidate: 10 } });
@@ -26,7 +27,7 @@ const MarkdownPostView = async ({params}:{ params: {id: string}}) => {
                     <div className="left-0 top-[0px] relative post-view">
                         <h1
                             className="w-full relative text-4xl font-bold text-black dark:text-white">{postContent.post_name}</h1>
-                        <div className="w-full relative text-[12px] text-gray-400 mt-1">{postContent.post_date}</div>
+                        <div className="w-full flex relative items-center text-gray-400 mt-1 gap-2"><span className="flex font-extrabold text-lg">{"Kirsi"}</span><span className="text-md">{getDate(postContent.post_date)}</span></div>
                     </div>
                     <div className="w-full flex justify-center my-4" style={{position: 'relative'}}>
                         <div className="h-auto flex image-cover rounded-[12px] max-h-[300px]" style={{width: "100%", background: postContent.post_color, position: 'relative'}}>
@@ -46,14 +47,16 @@ const MarkdownPostView = async ({params}:{ params: {id: string}}) => {
                         <div className="bg-white rounded-full w-24 h-24 overflow-hidden border-[2px] pl-1.5 border-opacity-30 m-2" style={{background: postContent.post_color}}>
                             <BannerCharView />
                         </div>
-                        <div className="m-4 mt-6 flex flex-col">
+                        <div className="m-4 justify-center flex flex-col">
                             <span className="font-extrabold text-2xl">KIRSI</span>
                             <span className="font-light text-sm">Frontend Developer</span>
                         </div>
                     </div>
                 </div>
+                <div className="flex absolute -right-6 h-full items-end">
+                    <FloatButton/>
+                </div>
             </div>
-            <FloatButton/>
             <Footer/>
         </div>
     );
