@@ -78,24 +78,28 @@ h1 {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
   }
 }
 
 @keyframes fadeIn {
   0% {
+    display: none;
     opacity: 0;
   }
   100% {
+    display: block;
     opacity: 1;
   }
 }
 
 @keyframes fadeOut {
   0% {
+    display: block;
     opacity: 1;
   }
   100% {
+    display: none;
     opacity: 0;
   }
 }
@@ -113,7 +117,16 @@ h1 {
   animation: fadeIn 1s ease-in-out forwards;
 }
 
+.fade-in-text {
+  animation-delay: 500ms;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
 .fade-out {
   animation: fadeOut 1s ease-in-out forwards;
+}
+
+.fade-out-text {
+  animation: fadeOut 0.2s ease-in-out forwards;
 }
 
