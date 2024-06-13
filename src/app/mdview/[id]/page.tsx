@@ -22,7 +22,7 @@ const MarkdownPostView = async ({params}:{ params: {id: string}}) => {
     const postContent = await getMarkdownPost(params.id);
     return (
         <div className="w-full min-h-[100vh] relative flex flex-wrap content-start">
-            <div className="flex relative w-full m-0 px-6 lg:w-[1024px] lg:m-auto lg:px-0 pt-24 pb-12">
+            <div className="flex relative w-full m-0 px-6 lg:w-[1024px] lg:m-auto lg:px-0 pt-24">
                 <div className="flex flex-1 relative flex-wrap content-start">
                     <div className="left-0 top-[0px] relative post-view">
                         <h1
