@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import BannerCharView from "@/components/common/BannerCharView";
 import FloatButton from "@/components/view/FloatButton";
 import { getDate } from "@/common/common";
+import ContinuePost from "@/components/view/ContinuePost";
 
 const getMarkdownPost = async (id:string) => {
     const res = await fetch(`${process.env.baseUrl}/markdown-posts/${id}`,{ next: { revalidate: 10 } });
@@ -42,7 +43,7 @@ const MarkdownPostView = async ({params}:{ params: {id: string}}) => {
                         </div>
                     </div>
                     <MarkdownPostViewer md={postContent.post_content}/>
-                    <div className="pt-4 mt-4 border-t-2 w-full flex border-dotted border-[#808080] border-opacity-30 flex-wrap">
+                    <div className="py-4 mt-4 border-t-2 border-b-0 w-full flex border-dotted border-[#808080] border-opacity-30 flex-wrap">
                         <span className="w-full font-extrabold text-xl px-2">Written by</span>
                         <div className="bg-white rounded-full w-24 h-24 overflow-hidden border-[2px] pl-1.5 border-opacity-30 m-2" style={{background: postContent.post_color}}>
                             <BannerCharView />
@@ -52,6 +53,7 @@ const MarkdownPostView = async ({params}:{ params: {id: string}}) => {
                             <span className="font-light text-sm">Frontend Developer</span>
                         </div>
                     </div>
+                    <ContinuePost id={params.id} />
                 </div>
                 <div className="flex absolute -right-6 h-full items-end">
                     <FloatButton/>
