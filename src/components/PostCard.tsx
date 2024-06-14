@@ -21,7 +21,7 @@ const PostCard = ({post}:{post: IMarkdownPost}) => {
                     <Image src={post.post_image.indexOf("http") === -1  ? randomSvgImage(post.post_image) : post.post_image} alt="document image" fill priority={true}
                            className="w-full h-40 object-cover group-hover:scale-110 transition-all"/>
                 </div>
-                <div className="flex w-full mt-0.5 overflow-hidden" style={{transition: "none"}}>
+                <div className="flex w-full mt-1.5 overflow-hidden" style={{transition: "none"}}>
                     <span className="text-xl font-bold truncate min-h-6">{post.post_name}</span>
                 </div>
                 <div className="flex w-full">

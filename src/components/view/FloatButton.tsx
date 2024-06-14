@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { ChevronLeftIcon, ChevronUpIcon } from "@heroicons/react/20/solid";
 
 const FloatButton = () => {
@@ -29,7 +29,7 @@ const FloatButton = () => {
     }
 
     const goToBack = () => {
-        router.back();
+        router.push("/");
     }
 
     useEffect(()=> {
