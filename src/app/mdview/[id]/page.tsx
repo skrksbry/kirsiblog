@@ -7,6 +7,7 @@ import FloatButton from "@/components/view/FloatButton";
 import { getDate } from "@/common/common";
 import ContinuePost from "@/components/view/ContinuePost";
 import dynamic from "next/dynamic";
+import SkeletonView from "@/components/common/SkeletonView";
 
 const getMarkdownPost = async (id:string) => {
     const res = await fetch(`${process.env.baseUrl}/markdown-posts/${id}`,{ next: { revalidate: 10 } });
@@ -19,10 +20,13 @@ export const generateMetadata = async ({ params }:{ params:{id: string}}): Promi
         return MetadataContent({title:`KIRSI BLOG | ${data.post_name}`, description:data.post_description, asPath:'', ogImage:`/og?id=${params.id}`})
     }
 
-const MarkdownPostViewer  = dynamic(() => import("@/components/view/MarkdownPostViewer"), { ssr: false });
+const MarkdownPostViewer  = dynamic(() => import("@/components/view/MarkdownPostViewer"), {
+    ssr: false,
+    loading: () => <SkeletonView />
+});
 
 
-const MarkdownPostView = async ({params}:{ params: {id: string}}) => {
+const MarkdownPostView = async ({params}: { params: { id: string } }) => {
     const postContent = await getMarkdownPost(params.id);
     return (
         <div className="w-full min-h-[100vh] relative flex flex-wrap content-start">
