@@ -1,4 +1,3 @@
-import MarkdownPostViewer from "@/components/view/MarkdownPostViewer";
 import Image from "next/image";
 import MetadataContent from "@/components/Metadata";
 import { IMetadata } from "@/interface/commentInterface";
@@ -7,6 +6,7 @@ import BannerCharView from "@/components/common/BannerCharView";
 import FloatButton from "@/components/view/FloatButton";
 import { getDate } from "@/common/common";
 import ContinuePost from "@/components/view/ContinuePost";
+import dynamic from "next/dynamic";
 
 const getMarkdownPost = async (id:string) => {
     const res = await fetch(`${process.env.baseUrl}/markdown-posts/${id}`,{ next: { revalidate: 10 } });
@@ -18,6 +18,9 @@ export const generateMetadata = async ({ params }:{ params:{id: string}}): Promi
         const data = await getMarkdownPost(params.id)
         return MetadataContent({title:`KIRSI BLOG | ${data.post_name}`, description:data.post_description, asPath:'', ogImage:`/og?id=${params.id}`})
     }
+
+const MarkdownPostViewer  = dynamic(() => import("@/components/view/MarkdownPostViewer"), { ssr: false });
+
 
 const MarkdownPostView = async ({params}:{ params: {id: string}}) => {
     const postContent = await getMarkdownPost(params.id);
