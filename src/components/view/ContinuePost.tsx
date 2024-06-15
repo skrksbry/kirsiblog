@@ -1,6 +1,4 @@
-import {useState} from "react";
-import {IMarkdownPost, IPost} from "@/interface/postInterface";
-import PostCard from "@/components/PostCard";
+import {IMarkdownPost} from "@/interface/postInterface";
 import PrevNextPost from "../PrevNextPost";
 
 const getPrevNextPost = async (id:string) => {
