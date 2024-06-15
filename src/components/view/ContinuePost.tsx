@@ -11,7 +11,7 @@ const getPrevNextPost = async (id:string) => {
 const ContinuePost = async ({id}:{id:string}) => {
     const posts = await getPrevNextPost(id);
     return (
-        <div className={`flex w-full gap-2 ${posts.length === 1 && posts[0].post_call_id > id ? "justify-end":""}`}>
+        <div className={`flex w-full mt-4 gap-2 ${posts.length === 1 && posts[0].post_call_id > id ? "justify-end":""}`}>
             {posts.map((post: IMarkdownPost) => (
                 <PrevNextPost key={post.post_call_id} post={post} basicPostId={id} />
             ))}
