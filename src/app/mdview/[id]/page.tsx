@@ -8,6 +8,7 @@ import { getDate } from "@/common/common";
 import ContinuePost from "@/components/view/ContinuePost";
 import dynamic from "next/dynamic";
 import SkeletonView from "@/components/common/SkeletonView";
+import {EyeIcon, HeartIcon} from "@heroicons/react/20/solid";
 
 const getMarkdownPost = async (id:string) => {
     const res = await fetch(`${process.env.baseUrl}/markdown-posts/${id}`,{ next: { revalidate: 10 } });
@@ -30,13 +31,13 @@ const MarkdownPostView = async ({params}: { params: { id: string } }) => {
     const postContent = await getMarkdownPost(params.id);
     return (
         <div className="w-full min-h-[100vh] relative flex flex-wrap content-start">
-            <div className="flex relative w-full m-0 px-6 lg:px-0 lg:w-[1024px] lg:m-auto lg:px
--0 pt-24">
+            <div className="flex relative w-full m-0 px-6 lg:px-0 lg:w-[1024px] lg:m-auto pt-24">
                 <div className="flex w-full flex-1 relative flex-wrap content-start">
-                    <div className="left-0 top-[0px] relative post-view">
+                    <div className="flex w-full flex-wrap left-0 top-[0px] relative post-view">
                         <h1
                             className="w-full relative text-4xl font-bold text-black dark:text-white">{postContent.post_name}</h1>
-                        <div className="w-full flex relative items-center text-gray-400 mt-6 gap-2"><span className="flex font-extrabold text-lg">{"Kirsi"}</span> | <span className="text-md">{getDate(postContent.post_date)}</span></div>
+                        <div className="flex-1 flex relative items-center text-gray-400 mt-6 gap-2"><span className="flex font-extrabold text-lg">{"Kirsi"}</span> | <span className="text-md">{getDate(postContent.post_date)}</span></div>
+                        <div className="flex relative items-center text-gray-400 mt-6 gap-2 "><EyeIcon className="w-4 h-4"/>{postContent.post_view_count} <HeartIcon className="w-4 h-4"/>{postContent.post_likes_count}</div>
                     </div>
                     <div className="w-full flex justify-center my-4" style={{position: 'relative'}}>
                         <div className="h-auto flex image-cover rounded-[12px] max-h-[300px]" style={{width: "100%", background: postContent.post_color, position: 'relative'}}>

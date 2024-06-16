@@ -9,11 +9,15 @@ const getPrevNextPost = async (id:string) => {
 const ContinuePost = async ({id}:{id:string}) => {
     const posts = await getPrevNextPost(id);
     return (
-        <div className={`flex w-full mt-4 gap-2 ${posts.length === 1 && posts[0].post_call_id > id ? "justify-end":""}`}>
-            {posts.map((post: IMarkdownPost) => (
-                <PrevNextPost key={post.post_call_id} post={post} basicPostId={id} />
-            ))}
-        </div>
+        <>
+            {/*<span className="w-full my-4 font-extrabold text-2xl">다음글</span>*/}
+            <div
+                className={`flex w-full gap-2 mt-4 ${posts.length === 1 && posts[0].post_call_id > id ? "justify-end" : ""}`}>
+                {posts.map((post: IMarkdownPost) => (
+                    <PrevNextPost key={post.post_call_id} post={post} basicPostId={id}/>
+                ))}
+            </div>
+        </>
     );
 }
 
