@@ -1,4 +1,19 @@
+const getMarkdownPost = async (id:string) => {
+    const res = await fetch(`${process.env.baseUrl}/markdown-posts/${id}`,{ next: { revalidate: 10 } });
+    return await res.json();
+}
+
 const SkeletonView = () => {
+
+    const getStringLines = ( target: string ) => {
+        if(!target) return 0;
+        const pattern = /  \n|\n\n/g;
+        const matches = target.match(pattern);
+        
+        return matches ? matches.length : 0;
+    }
+
+    
     const lines = Array.from({ length: 57 });
     return (
         <div className="w-full flex flex-wrap gap-2">
