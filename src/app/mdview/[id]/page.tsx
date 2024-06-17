@@ -10,10 +10,26 @@ import dynamic from "next/dynamic";
 import SkeletonView from "@/components/common/SkeletonView";
 import {EyeIcon, HeartIcon} from "@heroicons/react/20/solid";
 import LikeBtn from "@/components/view/LikeBtn";
+import { headers } from "next/headers";
+
 
 const getMarkdownPost = async (id:string) => {
     const res = await fetch(`${process.env.baseUrl}/markdown-posts/${id}`,{ next: { revalidate: 10 } });
     return await res.json();
+}
+
+const updateViewCountPost = async (id:string) => {
+    const headersList = headers();
+    const ip = headersList.get("x-forwarded-for");
+    console.log(ip);
+    return await fetch(`${process.env.baseUrl}/markdown-posts/viewCreate`, {
+        next: { revalidate: false },
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({id:id,ip:ip,ua:""}),
+    });
 }
 
 export const generateMetadata = async ({ params }:{ params:{id: string}}): Promise<IMetadata> =>
@@ -30,6 +46,7 @@ const MarkdownPostViewer  = dynamic(() => import("@/components/view/MarkdownPost
 
 const MarkdownPostView = async ({params}: { params: { id: string } }) => {
     const postContent = await getMarkdownPost(params.id);
+    await updateViewCountPost(params.id);
     return (
         <div className="w-full min-h-[100vh] relative flex flex-wrap content-start">
             <div className="flex relative w-full m-0 px-3 lg:px-0 lg:w-[1024px] lg:m-auto pt-24">
