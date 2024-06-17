@@ -68,7 +68,7 @@ const Header = ({theme}:{theme: string|undefined}) => {
     };
     return (
         <div
-            className={`flex z-20 py-4 px-6 lg:px-4 w-full fixed items-center gap-3 border-b-[1px] bg-[rgba(255,255,255,0.5)] dark:bg-[rgba(0,0,0,0.5)] backdrop-blur-sm left-0 top-0 flex-wrap ${scroll > 8 ? "drop-shadow-sm" :""}`}
+            className={`flex z-20 py-4 px-3 lg:px-4 w-full fixed items-center gap-3 border-b-[1px] bg-[rgba(255,255,255,0.5)] dark:bg-[rgba(0,0,0,0.5)] backdrop-blur-sm left-0 top-0 flex-wrap ${scroll > 8 ? "drop-shadow-sm" :""}`}
             style={scroll > 8 ? {
                 height: "68px",
                 borderColor: "rgba(255,255,255,0.1)",
