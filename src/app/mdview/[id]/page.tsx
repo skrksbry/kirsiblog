@@ -20,7 +20,12 @@ const getMarkdownPost = async (id:string) => {
 
 const updateViewCountPost = async (id:string) => {
     const headersList = headers();
-    const ip = headersList.get("x-forwarded-for");
+    let ip = headersList.get("x-forwarded-for");
+    if (ip) {
+        ip = ip.split(',')[0].trim();
+    }else{
+        ip = "0.0.0.0"
+    }
     return await fetch(`${process.env.baseUrl}/markdown-posts/viewCreate`, {
         next: { revalidate: false },
         method: 'POST',
