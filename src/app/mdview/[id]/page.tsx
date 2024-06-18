@@ -11,11 +11,16 @@ import SkeletonView from "@/components/common/SkeletonView";
 import {EyeIcon, HeartIcon} from "@heroicons/react/20/solid";
 import LikeBtn from "@/components/view/LikeBtn";
 import { headers } from "next/headers";
+import { notFound } from "next/navigation";
 
 
 const getMarkdownPost = async (id:string) => {
     const res = await fetch(`${process.env.baseUrl}/markdown-posts/${id}`,{ next: { revalidate: 10 } });
-    return await res.json();
+    if(res.status === 200){
+        return await res.json();
+    }else{
+        notFound()
+    }
 }
 
 const updateViewCountPost = async (id:string) => {
@@ -36,10 +41,24 @@ const updateViewCountPost = async (id:string) => {
     });
 }
 
+const mdToMetaDescription = (md: string) => {
+    let plain = md.replace(/!\[([^\]]+)\]\(([^)]+)\)/g, '$1'); // images
+    plain = plain.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1'); // links
+    plain = plain.replace(/[#*_`~>+\-=|]/g, '');
+    
+    // 3. Replace multiple spaces or newlines with a single space
+    plain = plain.replace(/\s+/g, ' ');
+
+    // 4. Trim any leading or trailing whitespace
+    plain = plain.trim();
+
+    return plain;
+}
+
 export const generateMetadata = async ({ params }:{ params:{id: string}}): Promise<IMetadata> =>
     {
         const data = await getMarkdownPost(params.id)
-        return MetadataContent({title:`KIRSI BLOG | ${data.post_name}`, description:data.post_description, asPath:'', ogImage:`/og?id=${params.id}`})
+        return MetadataContent({title:`KIRSI BLOG | ${data.post_name}`, description:mdToMetaDescription(data.post_content), asPath:'', ogImage:`/og?id=${params.id}`})
     }
 
 const MarkdownPostViewer  = dynamic(() => import("@/components/view/MarkdownPostViewer"), {
