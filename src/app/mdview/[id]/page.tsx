@@ -32,22 +32,16 @@ const updateViewCountPost = async (id:string) => {
         },
         body: JSON.stringify({id:id,ip:ip,ua:""}),
     });
-    try{
-        return res.json();
-    } catch (e) {
-        return null;
-    }
+    return res.json();
 }
 
 const mdToMetaDescription = (md: string) => {
     let plain = md.replace(/!\[([^\]]+)\]\(([^)]+)\)/g, '$1');
     plain = plain.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
     plain = plain.replace(/[#*_`~>+\-=|]/g, '');
-    
-    // 3. Replace multiple spaces or newlines with a single space
+
     plain = plain.replace(/\s+/g, ' ');
 
-    // 4. Trim any leading or trailing whitespace
     plain = plain.trim();
     if(plain.length > 1000){
         plain = plain.slice(0,1000);

@@ -6,7 +6,6 @@ import { useState } from "react";
 const LikeBtn = ({likes = 0, id, ip = "0.0.0.0", already = false}:{likes: number, id: string, ip: string, already?: boolean}) => {
     const [isLike, setIsLike] = useState<boolean>(already);
     const [likeCount,setLikeCount] = useState<number>(likes);
-    console.log(already);
     const changePostLike = async (id: string, ip: string) => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/markdown-posts/addLike/`, {
             method: 'POST',
