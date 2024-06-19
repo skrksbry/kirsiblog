@@ -4,13 +4,12 @@ import { IMetadata } from "@/interface/commentInterface";
 import Footer from "@/components/Footer";
 import BannerCharView from "@/components/common/BannerCharView";
 import FloatButton from "@/components/view/FloatButton";
-import { getDate } from "@/common/common";
+import { getClientIp, getDate } from "@/common/common";
 import ContinuePost from "@/components/view/ContinuePost";
 import dynamic from "next/dynamic";
 import SkeletonView from "@/components/common/SkeletonView";
 import {EyeIcon, HeartIcon} from "@heroicons/react/20/solid";
 import LikeBtn from "@/components/view/LikeBtn";
-import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 
 
@@ -24,13 +23,7 @@ const getMarkdownPost = async (id:string) => {
 }
 
 const updateViewCountPost = async (id:string) => {
-    const headersList = headers();
-    let ip = headersList.get("x-forwarded-for");
-    if (ip) {
-        ip = ip.split(',')[0].trim();
-    }else{
-        ip = "0.0.0.0"
-    }
+    const ip = getClientIp();
     return await fetch(`${process.env.baseUrl}/markdown-posts/viewCreate`, {
         next: { revalidate: false },
         method: 'POST',
@@ -42,8 +35,8 @@ const updateViewCountPost = async (id:string) => {
 }
 
 const mdToMetaDescription = (md: string) => {
-    let plain = md.replace(/!\[([^\]]+)\]\(([^)]+)\)/g, '$1'); // images
-    plain = plain.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1'); // links
+    let plain = md.replace(/!\[([^\]]+)\]\(([^)]+)\)/g, '$1');
+    plain = plain.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
     plain = plain.replace(/[#*_`~>+\-=|]/g, '');
     
     // 3. Replace multiple spaces or newlines with a single space
@@ -51,7 +44,9 @@ const mdToMetaDescription = (md: string) => {
 
     // 4. Trim any leading or trailing whitespace
     plain = plain.trim();
-
+    if(plain.length > 1000){
+        plain = plain.slice(0,1000);
+    }
     return plain;
 }
 
@@ -71,8 +66,8 @@ const MarkdownPostView = async ({params}: { params: { id: string } }) => {
     const postContent = await getMarkdownPost(params.id);
     await updateViewCountPost(params.id);
     return (
-        <div className="w-full min-h-[100vh] relative flex flex-wrap content-start">
-            <div className="flex relative w-full m-0 px-3 lg:px-0 lg:w-[1024px] lg:m-auto pt-24">
+        <div className="blg-page">
+            <div className="blg-page-content-area">
                 <div className="flex w-full flex-1 relative flex-wrap content-start">
                     <div className="flex w-full flex-wrap left-0 top-[0px] relative post-view">
                         <h1
@@ -103,7 +98,7 @@ const MarkdownPostView = async ({params}: { params: { id: string } }) => {
                             <span className="font-light text-sm text-gray-400">Frontend Developer</span>
                         </div>
                         <div className="flex flex-1 items-center justify-end">
-                            <LikeBtn likes={postContent.post_likes_count}/>
+                            <LikeBtn likes={postContent.post_likes_count} id={params.id} ip={getClientIp()}/>
                         </div>
 
                         <ContinuePost id={params.id} />
