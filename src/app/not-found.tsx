@@ -5,17 +5,17 @@ import Image from "next/image";
 
 const NotFound = async () => {
     return (
-        <div className="w-full h-full absolute bg-black text-white left-0 top-0 z-[32] items-center flex flex-col flex-wrap justify-center content-center">
-            <div className="relative w-full px-3 lg:px-0 lg:w-auto flex-wrap flex h-80">
-                <div className="relative h-80 w-80 scale-x-[-1] z-[2]">
+        <div className="w-full h-full absolute bg-black text-white left-0 top-0 z-[32] items-center flex flex-col flex-wrap justify-center content-center overflow-hidden">
+            <div className="relative w-full px-3 lg:px-0 lg:w-auto flex-wrap flex h-full content-center items-center justify-center">
+                <div className="relative h-60 w-60 lg:h-80 lg:w-80 scale-x-[-1] z-[2] -mb-20">
                     <Image fill src="https://r2.silvercherry.io/404_kirsi.png" alt="404 not found"/>
                 </div>
                 <div className="relative flex flex-col h-80 align-center justify-center z-[2]">
-                    <div className="flex font-extrabold text-8xl gap-3 mb-4">
-                        <ExclamationTriangleIcon className="w-20"/>
+                    <div className="flex font-extrabold text-4xl lg:text-8xl gap-3 mb-2 ld:mb-4">
+                        <ExclamationTriangleIcon className="w-10 lg:w-20"/>
                         <p>Oops !!</p>
                     </div>
-                    <span className="flex w-full justify-center my-4">이 페이지를 찾을 수 없었어요.</span>
+                    <span className="flex w-full justify-center my-2 lg:my-4">이 페이지를 찾을 수 없어요.</span>
                     <Link href={"/"} className="flex w-full justify-center">
                         <div
                             className="rounded-md bg-black text-white items-center dark:bg-white dark:text-black px-3 py-1 mt-4 text-sm">메인으로
