@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .blg-page {
+    @apply w-full min-h-[100vh] relative flex flex-wrap content-start;
+  }
+  .blg-page-content-area {
+    @apply flex relative w-full m-0 px-3 lg:px-0 lg:w-[1024px] lg:m-auto pt-24;
+  }
+  .blg-tooltip-top-center {
+    @apply min-w-[240px] pointer-events-none flex absolute justify-center items-center -top-11 right-0 px-3 py-1 bg-white text-black rounded-[9px] z-[2] animate-bounce;
+  }
+}
+
 @font-face {
   font-family: 'Pretendard';
   font-weight: 45 920;
