@@ -14,7 +14,7 @@ import { notFound } from "next/navigation";
 
 
 const getMarkdownPost = async (id:string) => {
-    const res = await fetch(`${process.env.baseUrl}/markdown-posts/${id}`,{ next: { revalidate: 10 } });
+    const res = await fetch(`${process.env.baseUrl}/markdown-posts/${id}`,{ cache: 'no-store' });
     if(res.status === 200){
         return await res.json();
     }else{
@@ -24,14 +24,19 @@ const getMarkdownPost = async (id:string) => {
 
 const updateViewCountPost = async (id:string) => {
     const ip = getClientIp();
-    return await fetch(`${process.env.baseUrl}/markdown-posts/viewCreate`, {
-        next: { revalidate: false },
+    const res = await fetch(`${process.env.baseUrl}/markdown-posts/viewCreate`, {
+        cache: 'no-store',
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({id:id,ip:ip,ua:""}),
     });
+    try{
+        return res.json();
+    } catch (e) {
+        return null;
+    }
 }
 
 const mdToMetaDescription = (md: string) => {
@@ -64,7 +69,7 @@ const MarkdownPostViewer  = dynamic(() => import("@/components/view/MarkdownPost
 
 const MarkdownPostView = async ({params}: { params: { id: string } }) => {
     const postContent = await getMarkdownPost(params.id);
-    await updateViewCountPost(params.id);
+    const likes = await updateViewCountPost(params.id);
     return (
         <div className="blg-page">
             <div className="blg-page-content-area">
@@ -98,7 +103,7 @@ const MarkdownPostView = async ({params}: { params: { id: string } }) => {
                             <span className="font-light text-sm text-gray-400">Frontend Developer</span>
                         </div>
                         <div className="flex flex-1 items-center justify-end">
-                            <LikeBtn likes={postContent.post_likes_count} id={params.id} ip={getClientIp()}/>
+                            <LikeBtn likes={postContent.post_likes_count} already={likes.status} id={params.id} ip={getClientIp()}/>
                         </div>
 
                         <ContinuePost id={params.id} />
