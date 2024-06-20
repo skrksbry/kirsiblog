@@ -14,7 +14,7 @@ import { notFound } from "next/navigation";
 
 
 const getMarkdownPost = async (id:string) => {
-    const res = await fetch(`${process.env.baseUrl}/markdown-posts/${id}`,{ cache: 'no-store' });
+    const res = await fetch(`${process.env.baseUrl}/markdown-posts/${id}`,{ next: { revalidate: 3600 } });
     if(res.status === 200){
         return await res.json();
     }else{
@@ -24,14 +24,19 @@ const getMarkdownPost = async (id:string) => {
 
 const updateViewCountPost = async (id:string) => {
     const ip = getClientIp();
-    const res = await fetch(`${process.env.baseUrl}/markdown-posts/viewCreate`, {
-        cache: 'no-store',
+    await fetch(`${process.env.baseUrl}/markdown-posts/viewCreate`, {
+        next: { revalidate: 3600 },
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({id:id,ip:ip,ua:""}),
     });
+}
+
+const getLikes = async (id:string) => {
+    const ip = getClientIp();
+    const res = await fetch(`${process.env.baseUrl}/markdown-posts/likes/${id}/${ip}`, {cache: 'no-store'});
     return res.json();
 }
 
@@ -63,7 +68,8 @@ const MarkdownPostViewer  = dynamic(() => import("@/components/view/MarkdownPost
 
 const MarkdownPostView = async ({params}: { params: { id: string } }) => {
     const postContent = await getMarkdownPost(params.id);
-    const likes = await updateViewCountPost(params.id);
+    const likes = await getLikes(params.id);
+    await updateViewCountPost(params.id);
     return (
         <div className="blg-page">
             <div className="blg-page-content-area">
@@ -72,7 +78,7 @@ const MarkdownPostView = async ({params}: { params: { id: string } }) => {
                         <h1
                             className="w-full relative text-4xl font-bold text-black dark:text-white">{postContent.post_name}</h1>
                         <div className="flex-1 flex relative items-center text-gray-400 mt-6 gap-2"><span className="flex font-extrabold text-lg">{"Kirsi"}</span> | <span className="text-md">{getDate(postContent.post_date)}</span></div>
-                        <div className="flex relative items-center text-gray-400 mt-6 gap-2 "><EyeIcon className="w-4 h-4"/>{postContent.post_view_count} <HeartIcon className="w-4 h-4"/>{postContent.post_likes_count}</div>
+                        <div className="flex relative items-center text-gray-400 mt-6 gap-2 "><EyeIcon className="w-4 h-4"/>{postContent.post_view_count} <HeartIcon className="w-4 h-4"/>{likes.like_count}</div>
                     </div>
                     <div className="w-full flex justify-center my-4" style={{position: 'relative'}}>
                         <div className="h-auto flex image-cover rounded-[12px] max-h-[300px]" style={{width: "100%", background: postContent.post_color, position: 'relative'}}>
@@ -97,7 +103,7 @@ const MarkdownPostView = async ({params}: { params: { id: string } }) => {
                             <span className="font-light text-sm text-gray-400">Frontend Developer</span>
                         </div>
                         <div className="flex flex-1 items-center justify-end">
-                            <LikeBtn likes={postContent.post_likes_count} already={likes.status} id={params.id} ip={getClientIp()}/>
+                            <LikeBtn likes={likes.like_count} already={likes.my_likes} id={params.id} ip={getClientIp()}/>
                         </div>
 
                         <ContinuePost id={params.id} />
