@@ -1,7 +1,13 @@
 "use client";
 import {useEffect, useState} from "react";
 import { usePathname, useRouter } from 'next/navigation'
-import {ChevronLeftIcon, ChevronUpIcon, MoonIcon, SunIcon} from "@heroicons/react/20/solid";
+import {
+    ChevronLeftIcon,
+    ChevronUpIcon, LockClosedIcon,
+    MoonIcon,
+    SunIcon,
+    UserIcon
+} from "@heroicons/react/20/solid";
 import Link from "next/link";
 
 const Header = ({theme}:{theme: string|undefined}) => {
@@ -56,7 +62,7 @@ const Header = ({theme}:{theme: string|undefined}) => {
             document.documentElement.setAttribute('data-color-mode', 'light');
             localStorage.setItem('theme', 'light');
             setCurrentTheme('light');
-            
+
             document.cookie = "theme=light; path=/; expires=" + 60 * 60 * 24 * 365 * 10;
         } else {
             document.documentElement.classList.add('dark');
@@ -109,7 +115,15 @@ const Header = ({theme}:{theme: string|undefined}) => {
                          style={{
                              transition: "opacity 0.25s",
                          }}>
-                        {currentTheme === "light" ? <SunIcon className="w-4 h-4"/> : <MoonIcon className="w-4 h-4"/> }{currentTheme.toUpperCase()}
+                        {currentTheme === "light" ? <SunIcon className="w-3 h-3"/> : <MoonIcon className="w-3 h-3"/> }{currentTheme.toUpperCase()}
+                    </div>
+                    <div onClick={()=>{router.push("/login")}}
+                        className="cursor-pointer text-[12px] flex justify-center items-center gap-0.5 opacity-70 hover:opacity-100 hover:underline  transition-transform"
+                         style={{
+                             transition: "opacity 0.25s",
+                         }}>
+                        {/*<UserIcon className="w-4 h-4" />*/}
+                        <LockClosedIcon className="w-3 h-3" /> LOGIN
                     </div>
                 </div>
             </div>
