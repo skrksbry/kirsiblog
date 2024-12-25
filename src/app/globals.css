@@ -3,142 +3,207 @@
 @tailwind utilities;
 
 @layer components {
-  .blg-page {
-    @apply w-full min-h-[100vh] relative flex flex-wrap content-start;
-  }
-  .blg-page-content-area {
-    @apply flex relative w-full m-0 px-3 lg:px-0 lg:w-[1024px] lg:m-auto pt-24;
-  }
-  .blg-tooltip-top-center {
-    @apply min-w-[240px] pointer-events-none flex absolute justify-center items-center -top-11 right-0 px-3 py-1 bg-white text-black rounded-[9px] z-[2] animate-bounce;
-  }
+	.blg-page {
+		@apply w-full min-h-[100vh] relative flex flex-wrap content-start;
+	}
+	.blg-page-content-area {
+		@apply flex relative w-full m-0 px-3 lg:px-0 lg:w-[1024px] lg:m-auto pt-24;
+	}
+	.blg-tooltip-top-center {
+		@apply min-w-[240px] pointer-events-none flex absolute justify-center items-center -top-11 right-0 px-3 py-1 bg-white text-black rounded-[9px] z-[2] animate-bounce;
+	}
+	.blg-login-input-div-enable {
+		@apply w-full mb-3 login-placeholder p-[10px] rounded-[8px] text-[16px] text-[#000] outline-none bg-[rgba(255,255,255,0.5)] focus:bg-[rgba(255,255,255,0.8)] shadow-sm focus:shadow-lg;
+	}
+	.blg-login-input-div-disable {
+		@apply w-full mb-3 text-[16px] text-[#fff] rounded-[8px] bg-transparent pointer-events-none;
+	}
 }
 
 @font-face {
-  font-family: 'Pretendard';
-  font-weight: 45 920;
-  font-style: normal;
-  src: url('/font/PretendardVariable.woff2') format('woff2-variations');
-  font-display: swap;
+	font-family: 'Pretendard';
+	font-weight: 45 920;
+	font-style: normal;
+	src: url('/font/PretendardVariable.woff2') format('woff2-variations');
+	font-display: swap;
 }
-body {
-  height: 100%;
+
+@font-face {
+    font-family: 'MaplestoryOTFBold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TTHakgyoansimMonggeulmonggeulR';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_keris@1.0/TTHakgyoansimMonggeulmonggeulR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
 }
 
 body {
-  margin: 0;
-  background: #eee;
-  font-family: "Pretendard", system-ui, -apple-system, BlinkMacSystemFont, ".SFNSText-Regular",
-  sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-y:scroll;
-  scroll-behavior: smooth;
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	background: #eee;
+	font-family: 'Pretendard', system-ui, -apple-system, BlinkMacSystemFont,
+		'.SFNSText-Regular', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-y: auto;
+	scroll-behavior: smooth;
 }
 
 .other h2 {
-  font-size: 18px;
-  color: #444;
-  margin-bottom: 7px;
+	font-size: 18px;
+	color: #444;
+	margin-bottom: 7px;
 }
 
 .other a {
-  color: #777;
-  text-decoration: underline;
-  font-size: 14px;
+	color: #777;
+	text-decoration: underline;
+	font-size: 14px;
 }
 
 .other ul {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
 }
 
 .App {
-  font-family: sans-serif;
-  text-align: center;
+	font-family: sans-serif;
+	text-align: center;
 }
 
 h1 {
-  font-size: 24px;
+	font-size: 24px;
 }
 
 .wmde-markdown h1,
 .wmde-markdown h2,
 .wmde-markdown h3 {
-  scroll-margin-top:72px;
+	scroll-margin-top: 72px;
 }
 
 .ltr {
-  text-align: left;
+	text-align: left;
 }
 
 .rtl {
-  text-align: right;
+	text-align: right;
 }
 .image-cover > div {
 }
 .image-unset {
-  object-fit: contain;
-  width: 100% !important;
-  position: relative !important;
-  height: unset !important;
+	object-fit: contain;
+	width: 100% !important;
+	position: relative !important;
+	height: unset !important;
 }
 
 @keyframes bounce2 {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-4px);
+	}
 }
 
 @keyframes fadeIn {
-  0% {
-    display: none;
-    opacity: 0;
-  }
-  100% {
-    display: block;
-    opacity: 1;
-  }
+	0% {
+		display: none;
+		opacity: 0;
+	}
+	100% {
+		display: block;
+		opacity: 1;
+	}
 }
 
 @keyframes fadeOut {
-  0% {
-    display: block;
-    opacity: 1;
-  }
-  100% {
-    display: none;
-    opacity: 0;
-  }
+	0% {
+		display: block;
+		opacity: 1;
+	}
+	100% {
+		display: none;
+		opacity: 0;
+	}
 }
 
 .bouncing {
-  animation: bounce2 1s ease-in-out infinite;
+	animation: bounce2 1s ease-in-out infinite;
 }
 
 .fade-in-bounce {
-
-  animation: fadeIn 1s ease-in-out forwards ,bounce2 1s ease-in-out infinite;
+	animation: fadeIn 1s ease-in-out forwards,
+		bounce2 1s ease-in-out infinite;
 }
 
 .fade-in {
-  animation: fadeIn 1s ease-in-out forwards;
+	animation: fadeIn 1s ease-in-out forwards;
 }
 
 .fade-in-text {
-  animation-delay: 500ms;
-  animation: fadeIn 1s ease-in-out forwards;
+	animation-delay: 500ms;
+	animation: fadeIn 1s ease-in-out forwards;
 }
 
 .fade-out {
-  animation: fadeOut 1s ease-in-out forwards;
+	animation: fadeOut 1s ease-in-out forwards;
 }
 
 .fade-out-text {
-  animation: fadeOut 0.2s ease-in-out forwards;
+	animation: fadeOut 0.2s ease-in-out forwards;
 }
 
+.login-placeholder::placeholder {
+	color: #eee;
+}
+
+.login-placeholder:focus::placeholder {
+	color: #000;
+}
+
+.verification-input {
+	background-color: rgba(255, 255, 255, 0.5);
+	text-align: center;
+	border-radius: 5px;
+	transition: border-color 0.3s ease;
+}
+
+.verification-input:focus {
+	background-color: rgba(255, 255, 255, 0.6);
+	border-color: none;
+	outline: none;
+}
+
+.verification-container input:nth-child(4) {
+	margin-right: 20px;
+}
+
+#nprogress .bar {
+	background-color: red !important;
+	bottom: 0 !important;
+	top: unset !important;
+}
+
+/* #nprogress .bar::after {
+	content: '';
+	position: absolute;
+	right: 0px;
+	bottom: 4px;
+	width: 32px;
+	height: 39px;
+	background-image: url('/kirsi-load-small.gif');
+	background-size: cover;
+	background-repeat: no-repeat;
+	transform: scaleX(-1);
+} */

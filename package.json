@@ -21,12 +21,14 @@
     "lodash": "^4.17.21",
     "next": "14.1.0",
     "next-remove-imports": "^1.0.12",
+    "nextjs-progressloader": "^1.2.0",
     "prism-react-renderer": "^2.3.1",
     "react": "^18",
     "react-code-block": "^1.0.0",
     "react-dom": "^18",
     "sharp": "^0.33.2",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.2.2",
