@@ -251,13 +251,16 @@ const Header = ({
 							transition: 'opacity 0.25s',
 						}}
 					>
-						{login && user.email ? (
+						{session.login ? (
 							<UserIcon className="w-4 h-4" />
 						) : (
 							<LockClosedIcon className="w-3 h-3" />
 						)}
-						{login && user.email
-							? user.nickname?.toUpperCase()
+						{session.login &&
+						session.user.email
+							? session.user.nickname?.toUpperCase()
+							: session.login
+							? '로드중..'
 							: 'LOGIN'}
 					</Link>
 				</div>

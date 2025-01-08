@@ -1,6 +1,7 @@
 import { CloudFlareIcon, NestIcon, NginxIcon } from '@/components/icons';
 import { LinkIcon } from '@heroicons/react/20/solid';
 import Link from 'next/link';
+import Logo from './common/Logo';
 
 const Footer = () => {
 	return (
@@ -9,20 +10,16 @@ const Footer = () => {
 				<div className="flex bg-[#808080] opacity-30 w-full h-[1px] my-2"></div>
 				<div className="w-full px-6 lg:px-0">
 					<div className="w-full flex gap-1 content-center items-center flex-wrap">
-						<div className="flex justify-center items-center font-black text-sm w-4 h-4 bg-[#808080] rounded-[3px]">
-							<span className="text-[rgb(233,233,233)] dark:text-black font-black transition-all duration-500">
-								K
-							</span>
-						</div>
+						<Logo width={'24px'} />
 						<div className="flex flex-col">
-							<span className="w-full text-[9px] font-black text-[#808080] leading-[90%]">
+							<span className="w-full text-[14px] font-black text-[#bb004a] leading-[90%]">
 								KIRSI BLOG
 							</span>
 						</div>
 					</div>
-					<div className="flex w-full items-center flex-wrap">
+					<div className="flex w-full items-center flex-wrap px-[5px]">
 						<div className="flex w-full gap-2 items-center">
-							<span className="text-[#808080] font-black text-[12px] min-w-[45px]">
+							<span className="text-[#808080] font-black text-[12px]">
 								KIRSI
 							</span>
 							<span className="text-[#808080] font-semibold text-[12px] min-w-[45px]">
@@ -38,20 +35,20 @@ const Footer = () => {
 							</span>
 						</div>
 					</div>
-					<div className="flex w-full gap-2 items-center">
-						<div className="flex gap-[2px]">
+					<div className="flex w-full gap-2 items-center px-[5px] pt-[5px]">
+						<div className="flex gap-[2px] items-center">
 							<NginxIcon className="fill-[#808080] w-4 h-4" />
 							<span className="text-[#808080] font-bold text-[9px]">
 								NginX
 							</span>
 						</div>
-						<div className="flex gap-[2px]">
+						<div className="flex gap-[2px] items-center">
 							<NestIcon className="fill-[#808080] w-4 h-4" />
 							<span className="text-[#808080] font-bold text-[9px]">
 								Nest.js
 							</span>
 						</div>
-						<div className="flex gap-[2px]">
+						<div className="flex gap-[2px] items-center">
 							<CloudFlareIcon className="fill-[#808080] w-4 h-4" />
 							<span className="text-[#808080] font-bold text-[9px]">
 								Cloud Flare

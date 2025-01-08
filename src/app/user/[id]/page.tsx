@@ -1,11 +1,10 @@
 import { getUserFromSession } from '@/app/layout';
 import PostCard from '@/components/PostCard';
-import PostList from '@/components/PostList';
 import ErrorHandlerRedirect from '@/components/Shadow/ErrorHandlerRedirect';
 import BannerCharView from '@/components/common/BannerCharView';
 import { cookies } from 'next/headers';
 
-export const getUser = async (userNickname: string = '') => {
+const getUser = async (userNickname: string = '') => {
 	const res = await fetch(`${process.env.baseUrl}/user/${userNickname}`, {
 		next: { revalidate: 3600 },
 	});

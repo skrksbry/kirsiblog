@@ -76,6 +76,9 @@ const MDWriter = () => {
 			setUploadFile(e.target.files[0]);
 		}
 	};
+	const imageRemove = () => {
+		setUploadFile(null);
+	};
 	return (
 		<>
 			<input
@@ -89,46 +92,75 @@ const MDWriter = () => {
 			<ColorBlock
 				color="linear-gradient(90deg, #d53369 0%, #daae51 100%)"
 				onClick={colorChnage}
+				nowColor={color}
 			/>
 			<ColorBlock
 				color="linear-gradient(90deg, #bdc2e8 0%, #e6dee9 100%)"
 				onClick={colorChnage}
+				nowColor={color}
 			/>
 			<ColorBlock
 				color="linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)"
 				onClick={colorChnage}
+				nowColor={color}
 			/>
 			<ColorBlock
 				color="linear-gradient(to right, #74ebd5, #acb6e5)"
 				onClick={colorChnage}
+				nowColor={color}
 			/>
 			<ColorBlock
 				color="linear-gradient( to right, #dd4e4e 10%, #dd4e4e 100%)"
 				onClick={colorChnage}
+				nowColor={color}
 			/>
 			<ColorBlock
 				color="linear-gradient(90deg, #111111 0%, #333333 100%)"
 				onClick={colorChnage}
+				nowColor={color}
 			/>
-			{/*TODO: 선택된 색상 인터페이스 어떻게 할지 고민 */}
-			<span className="w-full text-sm">
-				SELECTED GRADIENT : {color}
-			</span>
-			<input
-				onChange={(e) => {
-					setImageFileName(e.target.value);
-				}}
-				value={imageFileName}
-				className="w-full text-xl bg-transparent outline-none mb-2"
-				placeholder="이미지 파일명 입력"
-			></input>
+			<div className="w-full flex mb-6">
+				<div className="flex flex-wrap flex-col flex-1">
+					<input
+						onChange={(e) => {
+							setImageFileName(
+								e.target.value
+							);
+						}}
+						value={imageFileName}
+						className="w-full text-xl bg-transparent outline-none mb-2"
+						placeholder="이미지 파일명 입력"
+					></input>
+				</div>
+				<div className="flex flex-wrap flex-1">
+					{!uploadFile ? (
+						<input
+							type="file"
+							onChange={imageOnChange}
+							className="w-full text-md bg-transparent outline-none mb-2"
+						/>
+					) : (
+						<span className="w-full text-md">
+							{uploadFile.name}
+						</span>
+					)}
+					<button
+						className="w-26 p-2 h-9 text-[12px] font-bold bg-black dark:bg-white rounded-[10px] text-white dark:text-black mr-2"
+						onClick={imageUpload}
+					>
+						UPLOAD
+					</button>
+					{uploadFile && (
+						<button
+							className="w-26 p-2 h-9 text-[12px] font-bold bg-red-600 rounded-[10px]"
+							onClick={imageRemove}
+						>
+							REMOVE
+						</button>
+					)}
+				</div>
+			</div>
 
-			<input
-				type="file"
-				onChange={imageOnChange}
-				className="w-full text-lg bg-transparent outline-none mb-2"
-			/>
-			<button onClick={imageUpload}>이미지업로드</button>
 			<MDEditor
 				value={content}
 				onChange={setContent}
@@ -137,9 +169,9 @@ const MDWriter = () => {
 			/>
 			<button
 				onClick={submitMdPost}
-				className="w-full h-12 bg-black dark:bg-white rounded-[10px] mt-6 text-white dark:text-black"
+				className="w-full h-12 font-bold bg-black dark:bg-white rounded-[10px] mt-6 text-white dark:text-black"
 			>
-				보내기
+				POST
 			</button>
 		</>
 	);

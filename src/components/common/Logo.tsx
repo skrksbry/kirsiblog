@@ -7,7 +7,7 @@ const Logo = ({ width = '32px', fill = '#bb004a' }) => {
 			x="0px"
 			y="0px"
 			viewBox="0 0 1000 1000"
-			enable-background="new 0 0 1000 1000"
+			enableBackground="new 0 0 1000 1000"
 			fill={fill} //rgb(239, 68, 68)
 			width={width}
 		>

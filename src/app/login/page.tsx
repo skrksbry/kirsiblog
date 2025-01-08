@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import useToastStore from '@/store/toast.store';
 
 const checkValidEmail = async (email: string) => {
@@ -50,6 +50,8 @@ const LoginView = () => {
 	const [email, setEmail] = useState('');
 	const { newToast } = useToastStore();
 	const router = useRouter();
+	const searchParams = useSearchParams();
+	const errorParams = searchParams.get('error');
 	const koreanToEnglishMap: any = {
 		ㅂ: 'q',
 		ㅈ: 'w',
@@ -78,6 +80,16 @@ const LoginView = () => {
 		ㅜ: 'n',
 		ㅡ: 'm',
 	};
+
+	useEffect(() => {
+		if (errorParams === 'unauthorized') {
+			newToast({
+				message: '페이지에 접근할 권한이 없습니다.',
+				duration: 5000,
+				type: 'error',
+			});
+		}
+	}, [errorParams, newToast]);
 
 	const handleMouseMove = (e: {
 		currentTarget: { getBoundingClientRect: () => any };
@@ -194,6 +206,7 @@ const LoginView = () => {
 		);
 		if (validCheck.code === 200) {
 			router.push('/');
+			router.refresh();
 		} else {
 			newToast({
 				message: '인증에 실패하였습니다 코드를 확인해주세요.',
