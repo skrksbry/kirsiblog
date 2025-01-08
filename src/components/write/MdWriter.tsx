@@ -119,6 +119,11 @@ const MDWriter = () => {
 				onClick={colorChnage}
 				nowColor={color}
 			/>
+			<ColorBlock
+				color="linear-gradient(90deg, #bb004a 0%, #bb004a 100%)"
+				onClick={colorChnage}
+				nowColor={color}
+			/>
 			<div className="w-full flex mb-6">
 				<div className="flex flex-wrap flex-col flex-1">
 					<input
