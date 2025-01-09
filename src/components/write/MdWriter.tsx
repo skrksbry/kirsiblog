@@ -24,6 +24,7 @@ const MDWriter = () => {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
+				credentials: 'include',
 			},
 			body: JSON.stringify({
 				post_name: title,
@@ -68,6 +69,7 @@ const MDWriter = () => {
 				{
 					method: 'POST',
 					body: formData,
+					credentials: 'include',
 				}
 			).then((res: any) => {
 				const responseData = res.json();
