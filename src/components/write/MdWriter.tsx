@@ -49,9 +49,6 @@ const MDWriter = () => {
 	const imageRemove = () => {
 		setUploadFile(null);
 	};
-	const clipboardTest = () => {
-		navigator.clipboard.writeText(`![image](test)`);
-	};
 	const imageUpload = () => {
 		if (!uploadFile) {
 			newToast({
@@ -64,6 +61,7 @@ const MDWriter = () => {
 
 		const formData = new FormData();
 		formData.append('image', uploadFile);
+		imageRemove();
 		try {
 			fetch(
 				`${process.env.NEXT_PUBLIC_BASE_URL}/images/upload/`,
@@ -72,23 +70,15 @@ const MDWriter = () => {
 					body: formData,
 				}
 			).then((res: any) => {
-				if (navigator) {
-					navigator.clipboard.writeText(
-						`![image](${res.body.location})`
-					);
-					newToast({
-						message: '이미지 업로드를 완료하였습니다 markdown 문법을 붙혀넣어 사용하세요.',
-						duration: 5000,
-						type: 'success',
-					});
-				} else {
-					newToast({
-						message: '이미지 업로드를 완료하였습니다.',
-						duration: 5000,
-						type: 'success',
-					});
-				}
-				imageRemove();
+				const responseData = res.json();
+				navigator.clipboard.writeText(
+					`![image](${responseData.location})`
+				);
+				newToast({
+					message: '이미지 업로드를 완료하였습니다 markdown 문법을 붙혀넣어 사용하세요.',
+					duration: 5000,
+					type: 'success',
+				});
 			});
 		} catch (e) {
 			newToast({
@@ -182,12 +172,6 @@ const MDWriter = () => {
 							REMOVE
 						</button>
 					)}
-					<button
-						className="w-26 p-2 h-9 text-[12px] font-bold bg-red-600 rounded-[10px]"
-						onClick={clipboardTest}
-					>
-						TEST
-					</button>
 				</div>
 			</div>
 
