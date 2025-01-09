@@ -41,7 +41,14 @@ const MDWriter = () => {
 		});
 	};
 	const imageUpload = () => {
-		if (!uploadFile) return;
+		if (!uploadFile) {
+			newToast({
+				message: '업로드 실패',
+				duration: 5000,
+				type: 'error',
+			});
+			return;
+		}
 
 		const formData = new FormData();
 		formData.append('image', uploadFile);
