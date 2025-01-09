@@ -30,8 +30,8 @@ const MDWriter = () => {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				Cookie: document.cookie,
 			},
+			credentials: 'include',
 			body: JSON.stringify({
 				post_name: title,
 				post_image: `https://r2.silvercherry.io/${imageFileName}`,
@@ -74,14 +74,13 @@ const MDWriter = () => {
 				`${process.env.NEXT_PUBLIC_BASE_URL}/images/upload/`,
 				{
 					method: 'POST',
-					headers: {
-						Cookie: document.cookie,
-					},
 					body: formData,
+					credentials: 'include',
 				}
 			).then(async (res: any) => {
 				const responseData = await res.json();
-				alert(responseData.toString());
+				alert(responseData.code);
+				alert(responseData.location);
 				await navigator.clipboard.writeText(
 					`![image](${responseData.location})`
 				);
