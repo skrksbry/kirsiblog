@@ -49,6 +49,9 @@ const MDWriter = () => {
 	const imageRemove = () => {
 		setUploadFile(null);
 	};
+	const clipboardTest = () => {
+		navigator.clipboard.writeText(`![image](test)`);
+	};
 	const imageUpload = () => {
 		if (!uploadFile) {
 			newToast({
@@ -68,10 +71,10 @@ const MDWriter = () => {
 					method: 'POST',
 					body: formData,
 				}
-			).then(async (res: any) => {
+			).then((res: any) => {
 				if (navigator) {
-					await navigator.clipboard.writeText(
-						`![image](${res.location})`
+					navigator.clipboard.writeText(
+						`![image](${res.body.location})`
 					);
 					newToast({
 						message: '이미지 업로드를 완료하였습니다 markdown 문법을 붙혀넣어 사용하세요.',
@@ -179,6 +182,12 @@ const MDWriter = () => {
 							REMOVE
 						</button>
 					)}
+					<button
+						className="w-26 p-2 h-9 text-[12px] font-bold bg-red-600 rounded-[10px]"
+						onClick={clipboardTest}
+					>
+						TEST
+					</button>
 				</div>
 			</div>
 
