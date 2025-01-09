@@ -24,6 +24,10 @@ const nextConfig = {
 				source: '/auth/:path*',
 				destination: `${process.env.NEXT_PUBLIC_BASE_URL}/auth/:path*`,
 			},
+			{
+				source: '/images/:path*',
+				destination: `${process.env.NEXT_PUBLIC_BASE_URL}/images/:path*`,
+			},
 		];
 	},
 };

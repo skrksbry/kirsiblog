@@ -71,7 +71,7 @@ const MDWriter = () => {
 		imageRemove();
 		try {
 			fetch(
-				`${process.env.NEXT_PUBLIC_BASE_URL}/images/upload/`,
+				`/images/upload/`,
 				{
 					method: 'POST',
 					body: formData,
