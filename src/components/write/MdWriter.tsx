@@ -30,9 +30,7 @@ const MDWriter = () => {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				Cookie: `connect.sid=${getSessionCookie(
-					'connect.sid'
-				)}`,
+				Cookie: document.cookie,
 			},
 			body: JSON.stringify({
 				post_name: title,
@@ -77,16 +75,14 @@ const MDWriter = () => {
 				{
 					method: 'POST',
 					headers: {
-						Cookie: `connect.sid=${getSessionCookie(
-							'connect.sid'
-						)}`,
+						Cookie: document.cookie,
 					},
 					body: formData,
 				}
-			).then((res: any) => {
-				const responseData = res.json();
-				alert(responseData);
-				navigator.clipboard.writeText(
+			).then(async (res: any) => {
+				const responseData = await res.json();
+				alert(responseData.toString());
+				await navigator.clipboard.writeText(
 					`![image](${responseData.location})`
 				);
 				newToast({
