@@ -24,7 +24,6 @@ const MDWriter = () => {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				credentials: 'include',
 			},
 			body: JSON.stringify({
 				post_name: title,
@@ -36,6 +35,7 @@ const MDWriter = () => {
 				post_color: color,
 				post_content: content,
 			}),
+			credentials: 'include',
 		}).then(async (res) => {
 			const postData = await res.json();
 			router.push(`/mdview/${postData.post_call_id}`);
