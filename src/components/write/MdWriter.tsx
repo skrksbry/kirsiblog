@@ -77,19 +77,20 @@ const MDWriter = () => {
 					body: formData,
 					credentials: 'include',
 				}
-			).then(async (res: any) => {
-				const responseData = await res.json();
-				alert(responseData.code);
-				alert(responseData.location);
-				await navigator.clipboard.writeText(
-					`![image](${responseData.location})`
-				);
-				newToast({
-					message: '이미지 업로드를 완료하였습니다 markdown 문법을 붙혀넣어 사용하세요.',
-					duration: 5000,
-					type: 'success',
+			)
+				.then((res) => res.json())
+				.then((json) => {
+					alert(json.code);
+					alert(json.location);
+					navigator.clipboard.writeText(
+						`![image](${json.location})`
+					);
+					newToast({
+						message: '이미지 업로드를 완료하였습니다 markdown 문법을 붙혀넣어 사용하세요.',
+						duration: 5000,
+						type: 'success',
+					});
 				});
-			});
 		} catch (e) {
 			newToast({
 				message: '업로드 실패',
