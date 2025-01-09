@@ -19,11 +19,20 @@ const MDWriter = () => {
 	const colorChnage = (color: string) => {
 		setColor(color);
 	};
+	const getSessionCookie = (name: string) => {
+		const value = `; ${document.cookie}`;
+		const part = value.split(`; ${name}=`);
+		if (part.length === 2) return part.pop()?.split(';').shift();
+		return null;
+	};
 	const submitMdPost = () => {
 		fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/markdown-posts/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
+				Cookie: `connect.sid=${getSessionCookie(
+					'connect.sid'
+				)}`,
 			},
 			body: JSON.stringify({
 				post_name: title,
@@ -35,7 +44,6 @@ const MDWriter = () => {
 				post_color: color,
 				post_content: content,
 			}),
-			credentials: 'include',
 		}).then(async (res) => {
 			const postData = await res.json();
 			router.push(`/mdview/${postData.post_call_id}`);
@@ -68,11 +76,16 @@ const MDWriter = () => {
 				`${process.env.NEXT_PUBLIC_BASE_URL}/images/upload/`,
 				{
 					method: 'POST',
+					headers: {
+						Cookie: `connect.sid=${getSessionCookie(
+							'connect.sid'
+						)}`,
+					},
 					body: formData,
-					credentials: 'include',
 				}
 			).then((res: any) => {
 				const responseData = res.json();
+				alert(responseData);
 				navigator.clipboard.writeText(
 					`![image](${responseData.location})`
 				);
