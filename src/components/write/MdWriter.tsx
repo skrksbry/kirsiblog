@@ -40,6 +40,15 @@ const MDWriter = () => {
 			router.push(`/mdview/${postData.post_call_id}`);
 		});
 	};
+
+	const imageOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (e.target.files) {
+			setUploadFile(e.target.files[0]);
+		}
+	};
+	const imageRemove = () => {
+		setUploadFile(null);
+	};
 	const imageUpload = () => {
 		if (!uploadFile) {
 			newToast({
@@ -60,14 +69,23 @@ const MDWriter = () => {
 					body: formData,
 				}
 			).then(async (res: any) => {
-				await navigator.clipboard.writeText(
-					`![image](${res.location})`
-				);
-				newToast({
-					message: '이미지 업로드를 완료하였습니다 markdown 문법을 붙혀넣어 사용하세요.',
-					duration: 5000,
-					type: 'success',
-				});
+				if (navigator) {
+					await navigator.clipboard.writeText(
+						`![image](${res.location})`
+					);
+					newToast({
+						message: '이미지 업로드를 완료하였습니다 markdown 문법을 붙혀넣어 사용하세요.',
+						duration: 5000,
+						type: 'success',
+					});
+				} else {
+					newToast({
+						message: '이미지 업로드를 완료하였습니다.',
+						duration: 5000,
+						type: 'success',
+					});
+				}
+				imageRemove();
 			});
 		} catch (e) {
 			newToast({
@@ -76,15 +94,6 @@ const MDWriter = () => {
 				type: 'error',
 			});
 		}
-	};
-
-	const imageOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (e.target.files) {
-			setUploadFile(e.target.files[0]);
-		}
-	};
-	const imageRemove = () => {
-		setUploadFile(null);
 	};
 	return (
 		<>
