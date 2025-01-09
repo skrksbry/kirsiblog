@@ -10,7 +10,7 @@
 		@apply flex relative w-full m-0 px-3 lg:px-0 lg:w-[1024px] lg:m-auto pt-24;
 	}
 	.blg-tooltip-top-center {
-		@apply min-w-[240px] pointer-events-none flex absolute justify-center items-center -top-11 right-0 px-3 py-1 bg-white text-black rounded-[9px] z-[2] animate-bounce;
+		@apply min-w-[240px] pointer-events-none flex absolute justify-center items-center -top-12 right-0 px-3 py-1 bg-white text-black rounded-[9px] z-[2];
 	}
 	.blg-login-input-div-enable {
 		@apply w-full mb-3 login-placeholder p-[10px] rounded-[8px] text-[16px] text-[#000] outline-none bg-[rgba(255,255,255,0.5)] focus:bg-[rgba(255,255,255,0.8)] shadow-sm focus:shadow-lg;
@@ -29,17 +29,19 @@
 }
 
 @font-face {
-    font-family: 'MaplestoryOTFBold';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'MaplestoryOTFBold';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'TTHakgyoansimMonggeulmonggeulR';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_keris@1.0/TTHakgyoansimMonggeulmonggeulR.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'TTHakgyoansimMonggeulmonggeulR';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_keris@1.0/TTHakgyoansimMonggeulmonggeulR.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
 }
 
 body {

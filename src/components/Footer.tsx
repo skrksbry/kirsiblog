@@ -8,7 +8,7 @@ const Footer = () => {
 		<div className="flex w-full justify-center p-2 mb-2 flex-wrap">
 			<div className="flex w-[1024px] min-h-36 flex-wrap gap-2 content-start">
 				<div className="flex bg-[#808080] opacity-30 w-full h-[1px] my-2"></div>
-				<div className="w-full px-6 lg:px-0">
+				<div className="w-full px-2 lg:-px-2">
 					<div className="w-full flex gap-1 content-center items-center flex-wrap">
 						<Logo width={'24px'} />
 						<div className="flex flex-col">

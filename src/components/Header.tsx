@@ -151,7 +151,7 @@ const Header = ({
 						  }
 				}
 			>
-				<div className="flex w-full gap-3 items-center">
+				<div className="flex w-full gap-3 pr-4 lg:pr-0 items-center">
 					<Link
 						href="/"
 						className="flex items-center"
