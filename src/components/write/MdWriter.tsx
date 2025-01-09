@@ -80,8 +80,6 @@ const MDWriter = () => {
 			)
 				.then((res) => res.json())
 				.then((json) => {
-					alert(json.code);
-					alert(json.location);
 					navigator.clipboard.writeText(
 						`![image](${json.location})`
 					);
