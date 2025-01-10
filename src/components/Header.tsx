@@ -138,7 +138,7 @@ const Header = ({
 			}
 		>
 			<div
-				className="flex gap-1 w-full lg:w-[1024px] items-center transition-transform m-auto flex-wrap"
+				className="flex gap-1 blg-layout-width items-center transition-transform m-auto flex-wrap"
 				style={
 					scroll > 8
 						? {

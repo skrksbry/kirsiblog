@@ -7,7 +7,7 @@
 		@apply w-full relative flex flex-wrap content-start;
 	}
 	.blg-page-content-area {
-		@apply flex flex-wrap relative w-full m-0 px-3 lg:px-0 lg:w-[1024px] lg:m-auto pt-24;
+		@apply flex flex-wrap relative m-0 px-3 lg:px-0 lg:m-auto pt-24;
 	}
 	.blg-tooltip-top-center {
 		@apply min-w-[240px] pointer-events-none flex absolute justify-center items-center -top-12 right-0 px-3 py-1 bg-white text-black rounded-[9px] z-[2];
@@ -17,6 +17,9 @@
 	}
 	.blg-login-input-div-disable {
 		@apply w-full mb-3 text-[16px] text-[#fff] rounded-[8px] bg-transparent pointer-events-none;
+	}
+	.blg-layout-width {
+		@apply w-full lg:w-[1200px];
 	}
 }
 
