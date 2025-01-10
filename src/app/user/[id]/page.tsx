@@ -33,7 +33,7 @@ const UserInformation = async ({ params }: { params: { id: string } }) => {
 
 	return (
 		<div className="blg-page">
-			<div className="blg-page-content-area">
+			<div className="blg-page-content-area blg-layout-width">
 				{user ? (
 					<>
 						<div

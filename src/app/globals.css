@@ -19,7 +19,7 @@
 		@apply w-full mb-3 text-[16px] text-[#fff] rounded-[8px] bg-transparent pointer-events-none;
 	}
 	.blg-layout-width {
-		@apply w-full lg:w-[1200px];
+		@apply w-full md:w-[720px] lg:w-[1000px] xl:w-[1200px];
 	}
 }
 
