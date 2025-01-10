@@ -4,7 +4,7 @@
 
 @layer components {
 	.blg-page {
-		@apply w-full min-h-[100vh] relative flex flex-wrap content-start;
+		@apply w-full relative flex flex-wrap content-start;
 	}
 	.blg-page-content-area {
 		@apply flex relative w-full m-0 px-3 lg:px-0 lg:w-[1024px] lg:m-auto pt-24;
