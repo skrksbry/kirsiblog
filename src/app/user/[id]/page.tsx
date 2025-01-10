@@ -2,7 +2,9 @@ import { getUserFromSession } from '@/app/layout';
 import PostCard from '@/components/PostCard';
 import ErrorHandlerRedirect from '@/components/Shadow/ErrorHandlerRedirect';
 import BannerCharView from '@/components/common/BannerCharView';
+import Logo from '@/components/common/Logo';
 import { cookies } from 'next/headers';
+import Image from 'next/image';
 
 const getUser = async (userNickname: string = '') => {
 	const res = await fetch(`${process.env.baseUrl}/user/${userNickname}`, {
@@ -27,7 +29,6 @@ const UserInformation = async ({ params }: { params: { id: string } }) => {
 	const session = cookieStore.get('connect.sid');
 	const logind = await getUserFromSession(session?.value);
 	const { user, userInformation, message } = await getUser(params.id);
-	console.log(userInformation);
 
 	return (
 		<div className="blg-page">
@@ -35,29 +36,55 @@ const UserInformation = async ({ params }: { params: { id: string } }) => {
 				{user ? (
 					<>
 						<div
-							className="w-auto h-auto rounded-[8px] flex items-center flex-wrap flex-col"
+							className="w-full mx-4 mb-6 lg:mx-0 lg:w-auto h-[340px] rounded-[8px] flex items-center flex-wrap flex-col"
 							style={{
-								background: 'rgba(239, 68, 68, 0.7)',
+								background: '#bb004a',
 								position: 'relative',
 							}}
 						>
-							<div
-								className="w-full h-full rounded-[8px] absolute top-0 left-0"
-								style={{
-									background: 'linear-gradient(90deg, rgba(239, 68, 68, 0.4) 0%, rgba(218, 174, 81, 0.4) 100%)',
-								}}
-							></div>
-							<div className="rounded-full w-40 h-40 overflow-hidden border-[2px] box-content pl-2 border-opacity-30 m-6 mb-2 z-[4]">
-								<BannerCharView />
+							<div className="flex w-full px-3 py-3 gap-2 items-center">
+								<Image
+									width={
+										18
+									}
+									height={
+										18
+									}
+									src="https://r2.silvercherry.io/samlogo_only.png"
+									alt={
+										'blog-logo-simple'
+									}
+								/>
+								{/* <Logo fill="#fff" /> */}
+								<span
+									className="font-light"
+									style={{
+										fontFamily: 'TTHakgyoansimMonggeulmonggeulR',
+									}}
+								>
+									Writter
+								</span>
 							</div>
-							<h1 className="font-semibold text-white text-2xl z-[4]">
+							<div className="w-40 h-[200px] overflow-hidden box-content pl-2 border-b-2 border-opacity-30 mx-6 my-1 z-[4]">
+								<BannerCharView
+									width={
+										400
+									}
+									height={
+										400
+									}
+									y={0}
+									x={-100}
+								/>
+							</div>
+							<span className="font-semibold text-white text-2xl z-[4]">
 								{userInformation?.nickname.toUpperCase()}
-							</h1>
+							</span>
 							<span className="font-light text-[10px] mb-6 text-white z-[4]">
 								Frontend
 								Developer
 							</span>
-							<span className="font-light text-sm mb-6 text-white z-[4]">
+							{/* <span className="font-light text-sm mb-6 text-white z-[4]">
 								포스트{' '}
 								{
 									userInformation
@@ -65,10 +92,24 @@ const UserInformation = async ({ params }: { params: { id: string } }) => {
 										.length
 								}
 								개
-							</span>
+							</span> */}
 						</div>
-						<div className="flex flex-1">
-							<div className="flex w-full content-end px-4">
+						<div className="flex flex-1 flex-wrap">
+							<div className="flex w-full rounded-[8px] mx-4 min-h-32 bg-[#bb004a] justify-center items-center">
+								<span>
+									위젯
+									준비중
+								</span>
+							</div>
+							<div className="flex w-full px-6 py-6">
+								<h1 className="font-bold text-2xl">
+									{userInformation?.nickname.toUpperCase()}
+									님이
+									작성한
+									포스트
+								</h1>
+							</div>
+							<div className="grid grid-cols-1 w-full gap-2 lg:grid-cols-3 px-4">
 								{userInformation.user_posts.map(
 									(
 										post: any
