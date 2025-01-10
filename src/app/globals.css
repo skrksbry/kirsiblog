@@ -192,7 +192,7 @@ h1 {
 }
 
 #nprogress .bar {
-	background-color: red !important;
+	background-color: #bb004a !important;
 	bottom: 0 !important;
 	top: unset !important;
 }
