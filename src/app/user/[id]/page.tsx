@@ -1,4 +1,5 @@
 import { getUserFromSession } from '@/app/layout';
+import Footer from '@/components/Footer';
 import PostCard from '@/components/PostCard';
 import ErrorHandlerRedirect from '@/components/Shadow/ErrorHandlerRedirect';
 import BannerCharView from '@/components/common/BannerCharView';
@@ -138,6 +139,7 @@ const UserInformation = async ({ params }: { params: { id: string } }) => {
 				)}
 			</div>
 			<ErrorHandlerRedirect err={!user} message={message} />
+			<Footer />
 		</div>
 	);
 };
