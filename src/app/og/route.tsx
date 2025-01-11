@@ -1,4 +1,3 @@
-import Logo from '@/components/common/Logo';
 import { ImageResponse } from 'next/og';
 
 const getPost = async (id: string) => {
