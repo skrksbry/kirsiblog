@@ -143,7 +143,7 @@ const MDWriter = () => {
 				nowColor={color}
 			/>
 			<ColorBlock
-				color="linear-gradient(90deg, #7a6bf9 0%, #0cb0f2 100%)"
+				color="linear-gradient(22deg, #7a6bf9 0%, #0cb0f2 100%)"
 				onClick={colorChnage}
 				nowColor={color}
 			/>
