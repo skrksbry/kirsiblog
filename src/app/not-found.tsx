@@ -22,17 +22,14 @@ const NotFound = async () => {
 					<span className="flex w-full justify-center my-2 lg:my-4">
 						이 페이지를 찾을 수 없어요.
 					</span>
-					<Link
-						href={
-							'/'
-						}
-                        replace={true}
+					<a
+						href={'/'}
 						className="flex w-full justify-center"
 					>
 						<div className="rounded-md bg-black text-white items-center dark:bg-white dark:text-black px-3 py-1 mt-4 text-sm">
 							메인으로 돌아가기
 						</div>
-					</Link>
+					</a>
 				</div>
 				<div className="absolute -right-[100px] z-[1] -top-[120px] bg-red-500 opacity-30 blur-lg w-[248px] h-[248px] rounded-full" />
 				<div className="absolute -right-[0px] z-[1] -top-[0px] bg-green-500 opacity-30 blur-lg w-[248px] h-[248px] rounded-full" />
