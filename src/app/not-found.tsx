@@ -7,7 +7,10 @@ async function NotFound() {
 		${headers().get('Host')}${headers().get('x-next-pathname') || '/'}`;
 	return (
 		<div className="w-full h-full relative left-0 top-0 items-center flex flex-col flex-wrap justify-center content-center overflow-hidden">
-			<BackdropPoint path={path} ua={headers().get('User-agent')}/>
+			<BackdropPoint
+				path={path}
+				ua={headers().get('User-agent') || 'null'}
+			/>
 		</div>
 	);
 }
