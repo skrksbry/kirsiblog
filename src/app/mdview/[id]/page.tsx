@@ -13,6 +13,7 @@ import LikeBtn from '@/components/view/LikeBtn';
 import { notFound } from 'next/navigation';
 import LikeCountView from '@/components/view/LikeCountView';
 
+
 const getMarkdownPost = async (id: string) => {
 	const res = await fetch(`${process.env.baseUrl}/markdown-posts/${id}`, {
 		next: { revalidate: 3600 },
@@ -49,6 +50,7 @@ const mdToMetaDescription = (md: string) => {
 	}
 	return plain;
 };
+
 
 export const generateMetadata = async ({
 	params,

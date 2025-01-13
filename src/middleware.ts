@@ -5,6 +5,8 @@ import { getUserFromSession } from './app/layout';
 export const middleware = async (request: NextRequest) => {
 	const cookieStore = cookies();
 	const session = cookieStore.get('connect.sid');
+	const requestHeaders = new Headers(request.headers);
+	requestHeaders.set('x-next-pathname', request.nextUrl.pathname);
 
 	const protectedRoutes = ['/mdwrite', '/write'];
 
@@ -22,4 +24,10 @@ export const middleware = async (request: NextRequest) => {
 			return NextResponse.redirect(loginUrl);
 		}
 	}
+
+	return NextResponse.next({
+		request: {
+			headers: requestHeaders,
+		},
+	});
 };

@@ -1,5 +1,5 @@
 import './globals.css';
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import Header from '@/components/Header';
 import { IMetadata } from '@/interface/commentInterface';
 import MetadataContent from '@/components/Metadata';
@@ -43,6 +43,15 @@ const RootLayout = async ({
 	const theme = cookieStore.get('theme');
 	const session = cookieStore.get('connect.sid');
 	const logind = await getUserFromSession(session?.value);
+
+	const path = headers().get('x-next-pathname') || '/';
+	const isExcludePath =
+		path === '/' ||
+		path.startsWith('/mdview') ||
+		path.startsWith('/mdwrite') ||
+		path.startsWith('/user') ||
+		path.startsWith('/login');
+
 	return (
 		<html
 			data-color-mode={`${
@@ -53,8 +62,18 @@ const RootLayout = async ({
 				theme?.value === 'light' ? '' : 'dark'
 			}`}
 		>
-			<body className="text-black bg-[rgb(245,245,245)] dark:text-white dark:bg-black transition-all duration-500 pt-[68px]">
-				<Header theme={theme?.value} session={logind} />
+			<body
+				className={`text-black bg-[rgb(245,245,245)] dark:text-white dark:bg-black ${
+					isExcludePath &&
+					'pt-[68px] transition-all duration-500'
+				}`}
+			>
+				{isExcludePath && (
+					<Header
+						theme={theme?.value}
+						session={logind}
+					/>
+				)}
 				{children}
 				<Loadindicator />
 				<ToastContainer />
