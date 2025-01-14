@@ -151,6 +151,32 @@ h1 {
 	}
 }
 
+@keyframes flicker {
+	0%,
+	19.9%,
+	22%,
+	62.9%,
+	64%,
+	64.9%,
+	70%,
+	100% {
+		opacity: 0.99;
+		text-shadow: -1px -1px 0 #ff0066, 1px -1px 0 #ff0066,
+			-1px 1px 0 #ff0066, 1px 1px 0 #ff0066, 0 -2px 8px,
+			0 0 2px, 0 0 5px #bb004a, 0 0 8px #bb004a,
+			0 0 2px #bb004a, 0 2px 3px #000;
+	}
+	20%,
+	21.9%,
+	63%,
+	63.9%,
+	65%,
+	69.9% {
+		opacity: 0.4;
+		text-shadow: none;
+	}
+}
+
 .bouncing {
 	animation: bounce2 1s ease-in-out infinite;
 }

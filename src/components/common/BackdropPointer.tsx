@@ -110,7 +110,7 @@ const BackdropPoint = ({ path, ua }: { path: string; ua: string }) => {
 			})}
 
 			<div className="relative w-full h-full px-3 lg:px-0 lg:w-auto flex-wrap flex items-center content-center backdrop-blur-[2px] justify-center z-20">
-				<div className="relative flex h-60 w-60 lg:h-[340px] lg:w-[340px] scale-x-[-1] z-[2]">
+				<div className="relative flex h-60 w-60 lg:h-[340px] lg:w-[340px] scale-x-[-1] z-[2] -mb-28 lg:-mb-0">
 					<Image
 						fill
 						src="https://r2.silvercherry.io/404_kirsi.png"
@@ -120,16 +120,18 @@ const BackdropPoint = ({ path, ua }: { path: string; ua: string }) => {
 				<div className="relative flex flex-col justify-center items-center content-center z-[2] w-full lg:max-w-[380px]">
 					<div className="flex flex-col lg:items-center">
 						{/* <ExclamationTriangleIcon className="w-10 lg:w-20" /> */}
-						<span className="flex font-extrabold justify-center items-center w-full lg:w-[340px] text-[48px] lg:text-[64px] leading-none text-[#bb004a85] hover:text-[#bb004a] hover:[text-shadow:_0_0_5px_rgb(187_0_74_/_100%)] select-none">
-							NOT FOUND
+						<span className="flex font-extrabold justify-start items-center w-full text-[42px] lg:text-[48px] leading-none text-[#bb004a] [text-shadow:_0_0_5px_rgb(187_0_74_/_100%)] select-none -mb-2 lg:-mb-4">
+							NOT
+							<br />
+							FOUND
 						</span>
-						<span className="flex font-extrabold justify-center items-center w-full text-[140px] lg:text-[180px] leading-none text-[#bb004a85] hover:text-[#bb004a] hover:[text-shadow:_0_0_8px_rgb(187_0_74_/_100%)] select-none">
+						<span className="flex font-extrabold justify-center items-center w-full text-[140px] lg:text-[180px] text-[#bb004a] leading-none select-none animate-randomBlink">
 							404
 						</span>
 					</div>
 					<div className="flex flex-1 pb-3 ">
 						<div
-							className="flex flex-1 whitespace-normal break-all text-sm flex-wrap bg-gray-600/80 text-white dark:text-black rounded-md p-0.5 px-2"
+							className="flex flex-1 whitespace-normal break-all text-sm flex-wrap bg-gray-400/80 text-white dark:text-black rounded-md p-0.5 px-2"
 							style={{
 								fontFamily: 'MonoplexKR-Regular',
 							}}
