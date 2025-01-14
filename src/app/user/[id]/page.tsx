@@ -135,6 +135,48 @@ const UserInformation = async ({ params }: { params: { id: string } }) => {
 										/>
 									)
 								)}
+								{userInformation.user_posts.map(
+									(
+										post: any
+									) => (
+										<PostCard
+											key={
+												post.post_call_id
+											}
+											post={
+												post
+											}
+										/>
+									)
+								)}
+								{userInformation.user_posts.map(
+									(
+										post: any
+									) => (
+										<PostCard
+											key={
+												post.post_call_id
+											}
+											post={
+												post
+											}
+										/>
+									)
+								)}
+								{userInformation.user_posts.map(
+									(
+										post: any
+									) => (
+										<PostCard
+											key={
+												post.post_call_id
+											}
+											post={
+												post
+											}
+										/>
+									)
+								)}
 							</div>
 						</div>
 					</>

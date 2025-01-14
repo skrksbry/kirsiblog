@@ -110,21 +110,26 @@ const BackdropPoint = ({ path, ua }: { path: string; ua: string }) => {
 			})}
 
 			<div className="relative w-full h-full px-3 lg:px-0 lg:w-auto flex-wrap flex items-center content-center backdrop-blur-[2px] justify-center z-20">
-				<div className="relative flex h-60 w-60 lg:h-80 lg:w-80 scale-x-[-1] z-[2]">
+				<div className="relative flex h-60 w-60 lg:h-[340px] lg:w-[340px] scale-x-[-1] z-[2]">
 					<Image
 						fill
 						src="https://r2.silvercherry.io/404_kirsi.png"
 						alt="404 not found"
 					/>
 				</div>
-				<div className="relative flex flex-col justify-center items-center content-center z-[2]">
-					<div className="flex font-extrabold text-[64px] lg:text-[180px] leading-none text-[#bb004a80] ">
+				<div className="relative flex flex-col justify-center items-center content-center z-[2] w-full lg:max-w-[380px]">
+					<div className="flex flex-col lg:items-center">
 						{/* <ExclamationTriangleIcon className="w-10 lg:w-20" /> */}
-						404
+						<span className="flex font-extrabold justify-center items-center w-full lg:w-[340px] text-[48px] lg:text-[64px] leading-none text-[#bb004a85] hover:text-[#bb004a] hover:[text-shadow:_0_0_5px_rgb(187_0_74_/_100%)] select-none">
+							NOT FOUND
+						</span>
+						<span className="flex font-extrabold justify-center items-center w-full text-[140px] lg:text-[180px] leading-none text-[#bb004a85] hover:text-[#bb004a] hover:[text-shadow:_0_0_8px_rgb(187_0_74_/_100%)] select-none">
+							404
+						</span>
 					</div>
-					<div className="flex w-full pb-3">
+					<div className="flex flex-1 pb-3 ">
 						<div
-							className="flex w-full max-w-[380px] whitespace-normal break-all text-sm flex-wrap bg-gray-600 text-white dark:text-black rounded-md p-0.5 px-2"
+							className="flex flex-1 whitespace-normal break-all text-sm flex-wrap bg-gray-600/80 text-white dark:text-black rounded-md p-0.5 px-2"
 							style={{
 								fontFamily: 'MonoplexKR-Regular',
 							}}
@@ -138,14 +143,11 @@ const BackdropPoint = ({ path, ua }: { path: string; ua: string }) => {
 							</span>{' '}
 						</div>
 					</div>
-					<span className="flex flex-1 justify-center px-0.5">
-						이 페이지를 찾을 수 없어요.
-					</span>
 					<a
 						href={'/'}
-						className="flex justify-center"
+						className="flex justify-center w-full"
 					>
-						<div className="rounded-md bg-[#bb004a] text-white items-center dark:bg-[#bb004a] dark:text-white px-3 py-1 mt-4 text-sm transition-all hover:scale-110">
+						<div className="rounded-md bg-[#bb004a] w-full text-white items-center dark:bg-[#bb004a] dark:text-white px-3 py-3 mt-4 text-sm transition-all hover:scale-105">
 							메인으로 돌아가기
 						</div>
 					</a>
