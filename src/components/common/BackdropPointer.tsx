@@ -110,10 +110,10 @@ const BackdropPoint = ({ path, ua }: { path: string; ua: string }) => {
 			})}
 
 			<div className="relative w-full h-full px-3 lg:px-0 lg:w-auto flex-wrap flex items-center content-center backdrop-blur-[2px] justify-center z-20">
-				<div className="relative flex h-60 w-60 lg:h-[340px] lg:w-[340px] scale-x-[-1] z-[2] -mb-28 lg:-mb-0">
+				<div className="relative flex h-[374px] w-[330px] lg:h-[468px] lg:w-[412px] z-[2] -mb-28 lg:-mb-0 lg:-mr-10">
 					<Image
 						fill
-						src="https://r2.silvercherry.io/404_kirsi.png"
+						src="https://r2.silvercherry.io/kirsi_error.webp"
 						alt="404 not found"
 					/>
 				</div>
