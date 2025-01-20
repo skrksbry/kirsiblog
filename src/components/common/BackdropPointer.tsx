@@ -115,7 +115,7 @@ const BackdropPoint = ({ path, ua }: { path: string; ua: string }) => {
 						fill
 						src="https://r2.silvercherry.io/kirsi_error.webp"
 						alt="404 not found"
-						className="select-none drag-none"
+						className="select-none drag-none pointer-events-none"
 					/>
 				</div>
 				<div className="relative flex flex-col justify-center items-center content-center z-[2] w-full lg:max-w-[380px]">
