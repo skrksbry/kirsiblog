@@ -44,13 +44,7 @@ const RootLayout = async ({
 	const session = cookieStore.get('connect.sid');
 	const logind = await getUserFromSession(session?.value);
 
-	const path = headers().get('x-next-pathname') || '/';
-	const isExcludePath =
-		path === '/' ||
-		path.startsWith('/mdview') ||
-		path.startsWith('/mdwrite') ||
-		path.startsWith('/user') ||
-		path.startsWith('/login');
+	const path = headers().get('x-next-available') || 'header';
 
 	return (
 		<html
@@ -64,11 +58,11 @@ const RootLayout = async ({
 		>
 			<body
 				className={`text-black bg-[rgb(245,245,245)] dark:text-white dark:bg-black ${
-					isExcludePath &&
+					path === 'header' &&
 					'pt-[68px] transition-all duration-500'
 				}`}
 			>
-				{isExcludePath && (
+				{path === 'header' && (
 					<Header
 						theme={theme?.value}
 						session={logind}

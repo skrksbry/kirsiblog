@@ -6,7 +6,26 @@ export const middleware = async (request: NextRequest) => {
 	const cookieStore = cookies();
 	const session = cookieStore.get('connect.sid');
 	const requestHeaders = new Headers(request.headers);
-	requestHeaders.set('x-next-pathname', request.nextUrl.pathname);
+	const isExcludePath =
+		request.nextUrl.pathname === '/' ||
+		request.nextUrl.pathname.startsWith('/mdview') ||
+		request.nextUrl.pathname.startsWith('/mdwrite') ||
+		request.nextUrl.pathname.startsWith('/user') ||
+		request.nextUrl.pathname.startsWith('/login');
+	const checkPath = request.nextUrl.pathname.startsWith('/mdview');
+	let findedPage = isExcludePath;
+
+	if(checkPath){
+		const id = request.nextUrl.pathname.split('/mdview/')[1];
+		const result = await fetch(`${process.env.baseUrl}/markdown-posts/${id}`);
+		if(result.ok){
+			findedPage = true;
+		}else{
+			findedPage = false;
+		}
+	}
+
+	requestHeaders.set('x-next-available', findedPage ? "header" : "no-header");
 
 	const protectedRoutes = ['/mdwrite', '/write'];
 
