@@ -34,7 +34,7 @@ const MDWriter = () => {
 			credentials: 'include',
 			body: JSON.stringify({
 				post_name: title,
-				post_image: `https://r2.worker.silvercherry.io/${imageFileName}`,
+				post_image: `https://r2.silvercherry.io/${imageFileName}`,
 				post_category: '',
 				post_hidden: true,
 				post_description: '',

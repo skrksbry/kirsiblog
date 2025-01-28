@@ -52,7 +52,7 @@ const UserInformation = async ({ params }: { params: { id: string } }) => {
 										height={
 											18
 										}
-										src="https://r2.worker.silvercherry.io/samlogo_only.png"
+										src="https://r2.silvercherry.io/samlogo_only.png"
 										alt={
 											'blog-logo-simple'
 										}
