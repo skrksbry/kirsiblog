@@ -12,7 +12,7 @@ const nextConfig = {
 			},
 			{
 				protocol: 'https',
-				hostname: 'r2.silvercherry.io',
+				hostname: 'r2.worker.silvercherry.io',
 				port: '',
 				pathname: '/**',
 			},

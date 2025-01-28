@@ -3,7 +3,6 @@ import Footer from '@/components/Footer';
 import PostCard from '@/components/PostCard';
 import ErrorHandlerRedirect from '@/components/Shadow/ErrorHandlerRedirect';
 import BannerCharView from '@/components/common/BannerCharView';
-import Logo from '@/components/common/Logo';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 
@@ -53,7 +52,7 @@ const UserInformation = async ({ params }: { params: { id: string } }) => {
 										height={
 											18
 										}
-										src="https://r2.silvercherry.io/samlogo_only.png"
+										src="https://r2.worker.silvercherry.io/samlogo_only.png"
 										alt={
 											'blog-logo-simple'
 										}

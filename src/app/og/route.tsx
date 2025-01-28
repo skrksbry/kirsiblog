@@ -43,7 +43,7 @@ export const GET = async (request: Request) => {
 							}}
 						>
 							<img
-								src="https://r2.silvercherry.io/samlogo_small.png"
+								src="https://r2.worker.silvercherry.io/samlogo_small.png"
 								width="200px"
 							/>
 						</div>

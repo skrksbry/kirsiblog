@@ -34,7 +34,7 @@ const MDWriter = () => {
 			credentials: 'include',
 			body: JSON.stringify({
 				post_name: title,
-				post_image: `https://r2.silvercherry.io/${imageFileName}`,
+				post_image: `https://r2.worker.silvercherry.io/${imageFileName}`,
 				post_category: '',
 				post_hidden: true,
 				post_description: '',
@@ -70,14 +70,11 @@ const MDWriter = () => {
 		formData.append('image', uploadFile);
 		imageRemove();
 		try {
-			fetch(
-				`/images/upload/`,
-				{
-					method: 'POST',
-					body: formData,
-					credentials: 'include',
-				}
-			)
+			fetch(`/images/upload/`, {
+				method: 'POST',
+				body: formData,
+				credentials: 'include',
+			})
 				.then((res) => res.json())
 				.then((json) => {
 					navigator.clipboard.writeText(
