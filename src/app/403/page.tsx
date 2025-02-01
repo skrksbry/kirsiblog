@@ -2,7 +2,7 @@
 import BackdropPoint from '@/components/common/BackdropPointer';
 import { headers } from 'next/headers';
 
-async function NotFound() {
+async function ForbiddenPage() {
 	const path = `
 		${headers().get('Host')}${headers().get('x-next-pathname') || '/'}`;
 	return (
@@ -10,10 +10,10 @@ async function NotFound() {
 			<BackdropPoint
 				path={path}
 				ua={headers().get('User-agent') || 'null'}
-				eCode={404}
+				eCode={403}
 			/>
 		</div>
 	);
 }
 
-export default NotFound;
+export default ForbiddenPage;

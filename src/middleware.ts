@@ -15,17 +15,22 @@ export const middleware = async (request: NextRequest) => {
 	const checkPath = request.nextUrl.pathname.startsWith('/mdview');
 	let findedPage = isExcludePath;
 
-	if(checkPath){
+	if (checkPath) {
 		const id = request.nextUrl.pathname.split('/mdview/')[1];
-		const result = await fetch(`${process.env.baseUrl}/markdown-posts/${id}`);
-		if(result.ok){
+		const result = await fetch(
+			`${process.env.baseUrl}/markdown-posts/${id}`
+		);
+		if (result.ok) {
 			findedPage = true;
-		}else{
+		} else {
 			findedPage = false;
 		}
 	}
 
-	requestHeaders.set('x-next-available', findedPage ? "header" : "no-header");
+	requestHeaders.set(
+		'x-next-available',
+		findedPage ? 'header' : 'no-header'
+	);
 
 	const protectedRoutes = ['/mdwrite', '/write'];
 
@@ -38,9 +43,18 @@ export const middleware = async (request: NextRequest) => {
 		if (logind.login && logind.user.email) {
 			return NextResponse.next();
 		} else {
-			const loginUrl = new URL('/login', request.url);
-			loginUrl.searchParams.set('error', 'unauthorized');
-			return NextResponse.redirect(loginUrl);
+			const loginUrl = new URL('/403/', request.url);
+			// loginUrl.searchParams.set('error', 'unauthorized');
+			const requestHeaders = new Headers(request.headers);
+
+			requestHeaders.set('x-next-available', 'no-header');
+			return NextResponse.rewrite(loginUrl, {
+				status: 403,
+				headers: requestHeaders,
+			});
+			return NextResponse.next({
+				status: 403,
+			});
 		}
 	}
 

@@ -13,7 +13,15 @@ interface Star {
 	animationDuration: number;
 }
 
-const BackdropPoint = ({ path, ua }: { path: string; ua: string }) => {
+const BackdropPoint = ({
+	path,
+	ua,
+	eCode,
+}: {
+	path: string;
+	ua: string;
+	eCode: number;
+}) => {
 	const [position, setPosition] = useState({ x: 0, y: 0 });
 	const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 	const [stars, setStars] = useState<Star[]>([]);
@@ -111,24 +119,45 @@ const BackdropPoint = ({ path, ua }: { path: string; ua: string }) => {
 
 			<div className="relative w-full h-full px-3 lg:px-0 lg:w-auto flex-wrap flex items-center content-center backdrop-blur-[2px] justify-center z-20">
 				<div className="relative flex h-[374px] w-[330px] lg:h-[468px] lg:w-[412px] z-[0] -mb-28 lg:-mb-0 lg:-mr-10">
-					<Image
-						fill
-						src="https://r2.silvercherry.io/kirsi_error.webp"
-						alt="404 not found"
-						className="select-none drag-none pointer-events-none"
-					/>
+					{eCode === 404 ? (
+						<Image
+							fill
+							src="https://r2.silvercherry.io/kirsi_error.webp"
+							alt="404 not found"
+							className="select-none drag-none pointer-events-none"
+						/>
+					) : (
+						<Image
+							fill
+							src="https://r2.silvercherry.io/nia_forbidden_noobj.webp"
+							alt="403 Forbidden"
+							className="select-none drag-none pointer-events-none"
+						/>
+					)}
 				</div>
 				<div className="relative flex flex-col justify-center items-center content-center z-[2] w-full lg:max-w-[380px]">
 					<div className="flex flex-col lg:items-center">
 						{/* <ExclamationTriangleIcon className="w-10 lg:w-20" /> */}
-						<span className="flex font-extrabold justify-start items-center w-full text-[42px] lg:text-[48px] leading-none text-[#bb004a] [text-shadow:_0_0_5px_rgb(187_0_74_/_100%)] select-none -mb-2 lg:-mb-4">
-							NOT
-							<br />
-							FOUND
-						</span>
-						<span className="flex font-extrabold justify-center items-center w-full text-[140px] lg:text-[180px] text-[#bb004a] leading-none select-none animate-randomBlink">
-							404
-						</span>
+						{eCode === 404 ? (
+							<span className="flex font-extrabold justify-start items-center w-full text-[42px] lg:text-[48px] leading-none text-[#bb004a] [text-shadow:_0_0_5px_rgb(187_0_74_/_100%)] select-none -mb-2 lg:-mb-4">
+								NOT
+								<br />
+								FOUND
+							</span>
+						) : (
+							<span className="flex font-extrabold justify-start items-center w-full text-[42px] lg:text-[48px] leading-none text-[#bb004a] [text-shadow:_0_0_5px_rgb(187_0_74_/_100%)] select-none -mb-2 lg:-mb-4">
+								Forbidden
+							</span>
+						)}
+						{eCode === 404 ? (
+							<span className="flex font-extrabold justify-center items-center w-full text-[140px] lg:text-[180px] text-[#bb004a] leading-none select-none animate-randomBlink">
+								404
+							</span>
+						) : (
+							<span className="flex font-extrabold justify-center items-center w-full text-[140px] lg:text-[180px] text-[#bb004a] leading-none select-none animate-randomBlink">
+								403
+							</span>
+						)}
 					</div>
 					<div className="flex flex-1 pb-3 ">
 						<div
